@@ -25,14 +25,18 @@ function App() {
         <OutputResult />
 
         {words.length != 0 && (
-          <WordCloud
-            data={words}
-            rotate={0}
-            height={100}
-            width={100}
-            padding={0}
-            font="Helvetica, sans-serif"
-          />
+          <div class="card">
+            <div class="card-body">
+              <WordCloud
+                data={words}
+                rotate={0}
+                height={100}
+                width={100}
+                padding={0}
+                font="Helvetica, sans-serif"
+              />
+            </div>
+          </div>
         )}
 
         <h2>The files & text the user has uploaded</h2>

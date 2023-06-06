@@ -37,17 +37,56 @@ function UploadForm({ formValue, setFormValue }) {
   return (
     <div>
       <div class="mb-3">
-        <Button className="mt-auto" onClick={fileInputHandler}>
-          text input
-        </Button>
-        <Button onClick={textInputHandler}>file input</Button>
+        <div
+          class="btn-group"
+          role="group"
+          aria-label="Basic radio toggle button group"
+        >
+          <input
+            type="radio"
+            class="btn-check"
+            name="btnradio"
+            id="btnradio1"
+            autocomplete="off"
+            checked
+          />
+          <label
+            onClick={fileInputHandler}
+            class="btn btn-outline-primary"
+            for="btnradio1"
+          >
+            Text Input
+          </label>
+
+          <input
+            type="radio"
+            class="btn-check"
+            name="btnradio"
+            id="btnradio2"
+            autocomplete="off"
+          />
+          <label
+            onClick={textInputHandler}
+            class="btn btn-outline-primary"
+            for="btnradio2"
+          >
+            File Input
+          </label>
+        </div>
       </div>
       <form onSubmit={gcpHandler}>
         <div class="mb-3">
           {fileInput ? (
-            <input type="file" onChange={fileValueHandler}></input>
+            <input
+              class="form-control"
+              type="file"
+              id="formFile"
+              onChange={fileValueHandler}
+            ></input>
           ) : (
             <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
               value={textValue}
               onChange={(e) => formHandler(e.target.value)}
             ></textarea>
