@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "my-project-nlp-23",
+  "private_key_id": "3b86bf63379eed7767d78ecb48a30f2791696956",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCGzwq9RykdKSVh\nzITu517yjZFMGx5tzbLgcbtR4Rzxc4XleRhUNl0JAWYTQVSamrzx4mrFayuohLTj\ntFNNgRfqbuDHdmI8KsH/+OlymUKldxjWXhEgBysPuowFBg6cMcI+VAQQsMPJD/2U\n6EUufGl2L4QXWTuvqBoK2TwJSUYy3XosEd1y1ejF3R5ZWFZzHtZIuvz0ZQZ/hcqj\njKP91QGFveeeo3j9GIWD0XiCTQNLeIpLYV2U84b6xpak8GgUZTg60GlsfMBZi8q3\n5FaIavyw5QiBfplfQNt6c/qY7k8Bup7CBO7QfD5Dyp0ySeKTOftspOrgUyVW38pn\nGGNw3navAgMBAAECggEAH8s3xLFCRJLeMqUaGwAtd/YkdPcWY542WFHqdGKrwVRW\nGWtIbiAOLCAM03C+g+IHuuKD/QCMIOf/g46VcPuHyO4SjGhivb711yl84V69BapD\njNdNoaifIswD1vF5Q6RGpA2LkeYmnsZrL5HiMxb7hnipZhpRBdoXHkTisGv8JuWW\nkaSPtWe4LuKuQQLs1YQsVRlZjyC6KaFMB+oTgmo64sDzoww0jI6H833HtZDqFcQ2\n3CY5+zSlRaiN+mp6vAS7HXZS7Cg1pibKlzM5lD1fPJ6/v8Xjb88YFDfefmgIDiLx\nJqe9uTYEQStlF6H5nF0WaXdDeRzJ5mwrebFayr2cdQKBgQC+ejGbLAb9E2H64xWw\nGDrOGOVooLA3Tq09oG5IDq9pcbHoNV4BUyyOpy3LQ6BQREMuNNHuDbOSthii5JzB\n3pA3zVeFc4wlYklK2vWvjuwnT7cwGB4xQ3z+T39pTz06BhxzDlrXLUJe/Y0F90o4\nVy0A5WBQJBO0Vw84WG63Lp0HlQKBgQC1LpDCxRdSm3P00YaRPzkIp4VfUZb96HOO\nwYuh2Fgt+F+Zay29abDLU6EuRSYGt04xeYuZaHMVVJt5a5n2nQ8gPb+B0pyemojz\n6tkO6fGnefk6ZUqoD8xQDrVrR8dAbIAYtg874rs+SF/rswbdnU2Vtfz6/bLsi2la\nof1yYzEkMwKBgAyGEj7mnSsEnDuXtLRYU317i5HehteMF73mj3mzZXskW5Mt9xlV\nM6fJfCxSLPc6FcSy+l6Rjg4GZQZIy7m/fXH90VRX7Y4DsVf3n5HEbuiCyEOkQk/w\n5QX/ihwNdrQa9MHn3rcpJaUDPMN4p+ueZ7oYWsXKKXWBB+InhlgK+44lAoGALQBx\n6E636ka+WHKqb+06J1IkqHZFgK959F1SZ1KrJE/qvtqGM+PKi9Yr1KhMN6LUAynj\naKku3H91VoVJap28Ig/0PzSmviY4Gg2c+D1XTnfXVY/PKUszPjdJDGp5rSDF+F1Q\nD1nTlDa5zHtdGzJ1ENhxC450IJjIBED0CLNmg00CgYAeWW98bAYgcxQEZA6dKxmt\nyIZF0rpcEn+g3R9RsCFfzQh8NaZrVNj+NsnftrXP++9kLCM47SkXZo7qhrXyNgcC\nr1fUnpI7s9Pn3DqJ84Efbv5HN80nBxI9j92MSZM/7xb8g8oFlkMos9zgQMhpTWKx\n5x09VVqN32clUxO0PaeMZA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "my-nlp@my-project-nlp-23.iam.gserviceaccount.com",
+  "client_id": "102192022091658776500",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/my-nlp%40my-project-nlp-23.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
