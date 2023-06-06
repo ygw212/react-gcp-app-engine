@@ -48,7 +48,7 @@ function UploadForm({ formValue, setFormValue }) {
             name="btnradio"
             id="btnradio1"
             autocomplete="off"
-            checked
+            checked={!fileInput}
           />
           <label
             onClick={fileInputHandler}
@@ -64,6 +64,7 @@ function UploadForm({ formValue, setFormValue }) {
             name="btnradio"
             id="btnradio2"
             autocomplete="off"
+            checked={fileInput}
           />
           <label
             onClick={textInputHandler}

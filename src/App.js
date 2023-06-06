@@ -16,10 +16,19 @@ function App() {
 
   return (
     <div>
+      <nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand">Title</a>
+    <form class="d-flex" role="search">
+    <button class="btn btn-outline-success me-2" type="button">Register</button>
+      <button class="btn btn-outline-success me-2" >Login</button>
+    </form>
+  </div>
+</nav>
       <Container>
-        <h1>Title</h1>
-        <h2>注册/登录</h2>
-        <Row>
+      
+        
+        <Row class="pt-4">
           <UploadForm formValue={formValue} setFormValue={setFormValue} />
         </Row>
         <OutputResult />
