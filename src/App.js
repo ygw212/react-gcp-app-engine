@@ -17,18 +17,19 @@ function App() {
   return (
     <div>
       <nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand">Title</a>
-    <form class="d-flex" role="search">
-    <button class="btn btn-outline-success me-2" type="button">Register</button>
-      <button class="btn btn-outline-success me-2" >Login</button>
-    </form>
-  </div>
-</nav>
+        <div class="container-fluid">
+          <a class="navbar-brand">Title</a>
+          <form class="d-flex" role="search">
+            <button class="btn btn-outline-success me-2" type="button">
+              Register
+            </button>
+            <button class="btn btn-outline-success me-2">Login</button>
+          </form>
+        </div>
+      </nav>
       <Container>
-      
-        
-        <Row class="pt-4">
+        <h4 class='pt-2'>Name</h4>
+        <Row >
           <UploadForm formValue={formValue} setFormValue={setFormValue} />
         </Row>
         <OutputResult />
@@ -48,7 +49,7 @@ function App() {
           </div>
         )}
 
-        <h2>The files & text the user has uploaded</h2>
+        <h2 class='h4'>The files & text the user has uploaded</h2>
         <div>{formValue} </div>
       </Container>
     </div>
