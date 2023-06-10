@@ -1,15 +1,17 @@
-import React, { useMemo } from "react";
+import React, { useContext, useMemo } from "react";
 import UploadForm from "../components/UploadForm";
 import { tokenizeWords } from "../hooks/nlp";
 import OutputResult from "../components/OutputResult";
 import WordCloud from "react-d3-cloud";
+import { UserContext } from "../App";
 
 function HomePage({ formValue, setFormValue }){
 //tokenize the input text content
 const words = useMemo(() => tokenizeWords(formValue), [formValue]);
-
+const curUser = useContext(UserContext);
     return(
         <>
+        <div>{curUser}</div>
         <UploadForm  formValue={formValue} setFormValue={setFormValue} />
             <OutputResult />
             {words.length !== 0 && (
