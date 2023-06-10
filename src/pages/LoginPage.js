@@ -77,9 +77,10 @@ function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
           console.log('Error', error.message);
         }
         console.log(error.config);
+        setIsLoading(false);
       });
       //navigate("/");
-      setIsLoading(false);
+      
   }
 
   return (

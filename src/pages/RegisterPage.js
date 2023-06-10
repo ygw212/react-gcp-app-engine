@@ -9,14 +9,17 @@ function RegisterPage({ currentUser, setCurrentUser, token, setToken }) {
   const navigate = useNavigate();
   function emailHandler(value) {
     setEmail(value);
+    SetErrorMsg("");
   }
 
   function userNameHandler(value) {
     setUserName(value);
+    SetErrorMsg("");
   }
 
   function passWordHandler(value) {
     setPassWord(value);
+    SetErrorMsg("");
   }
   const [isLoading, setIsLoading] = useState(false);
 
@@ -63,9 +66,10 @@ function RegisterPage({ currentUser, setCurrentUser, token, setToken }) {
           console.log('Error', error.message);
         }
         console.log(error.config);
+        setIsLoading(false);
       });
     
-    setIsLoading(false);
+    
   }
   return (
     <div class="card" style={{ width: 50 + "%", margin: "auto", padding: 20 }}>
