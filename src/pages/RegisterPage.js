@@ -39,7 +39,7 @@ function RegisterPage({currentUser, setCurrentUser, token, setToken}) {
         console.log(res);
         console.log(res.data);
         const result = res.data.user;
-        setCurrentUser(result.id);
+        setCurrentUser(result.email);
       });
   }
   return (
@@ -87,7 +87,7 @@ function RegisterPage({currentUser, setCurrentUser, token, setToken}) {
           </button>
         </form>
       </div>
-      <div>user:</div>
+      <div>user12121:</div>
       <div>{currentUser}</div>
     </div>
   );

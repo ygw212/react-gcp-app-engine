@@ -1,10 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function LoginPage({currentUser, setCurrentUser, token, setToken}) {
+function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
+  let userRes = {
+    email: "",
+    id: "",
+    isEmailVerified: false,
+    name: "",
+    role: "",
+  };
   const [email, setEmail] = useState("");
   const [passWord, setPassWord] = useState("");
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState({
+    email: "a",
+    id: "",
+    isEmailVerified: false,
+    name: "",
+    role: "",
+  });
   function emailHandler(value) {
     setEmail(value);
   }
@@ -23,22 +36,28 @@ function LoginPage({currentUser, setCurrentUser, token, setToken}) {
     });
     console.log(user);
     axios
-      .post(`https://image-1-hhsvceryxq-uc.a.run.app/v1/auth/login`, JSON.stringify({
-        "email": email,
-        "password": passWord,
-      }),{
-        headers: {
-          // Overwrite Axios's automatically set Content-Type
-          "Content-Type": "application/json",
-        },
-      })
+      .post(
+        `https://image-1-hhsvceryxq-uc.a.run.app/v1/auth/login`,
+        JSON.stringify({
+          email: email,
+          password: passWord,
+        }),
+        {
+          headers: {
+            // Overwrite Axios's automatically set Content-Type
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((res) => {
         console.log(res);
         console.log(res.data);
         const result = res.data.user;
-        setUserData(result.id);
+        //setUserData(result.id);
         setCurrentUser(result.id);
-        console.log(userData);
+        setUserData(result);
+        userRes = result;
+        console.log(userRes);
       });
   }
 
@@ -83,6 +102,8 @@ function LoginPage({currentUser, setCurrentUser, token, setToken}) {
       </div>
       <div>user:</div>
       <div>{currentUser}</div>
+      <div>user email:</div>
+      <div>{JSON.stringify(userData)}</div>
     </div>
   );
 }
