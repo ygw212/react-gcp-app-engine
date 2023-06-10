@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
-  let userRes = {
-    email: "",
-    id: "",
-    isEmailVerified: false,
-    name: "",
-    role: "",
-  };
+  const navigate = useNavigate();
+  const [errorMsg, SetErrorMsg] = useState("");
   const [email, setEmail] = useState("");
   const [passWord, setPassWord] = useState("");
   const [userData, setUserData] = useState({
@@ -18,12 +14,15 @@ function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
     name: "",
     role: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
   function emailHandler(value) {
     setEmail(value);
+    SetErrorMsg("");
   }
 
   function passWordHandler(value) {
     setPassWord(value);
+    SetErrorMsg("");
   }
 
   function submitHandler(e) {
@@ -35,6 +34,7 @@ function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
       password: passWord,
     });
     console.log(user);
+    setIsLoading(true);
     axios
       .post(
         `https://image-1-hhsvceryxq-uc.a.run.app/v1/auth/login`,
@@ -53,12 +53,33 @@ function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
         console.log(res);
         console.log(res.data);
         const result = res.data.user;
-        //setUserData(result.id);
-        setCurrentUser(result.id);
+
+        setCurrentUser(result);
         setUserData(result);
-        userRes = result;
-        console.log(userRes);
+        navigate("/");
+        
+      }).catch(function (error) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+          SetErrorMsg(error.response.data.message);
+          
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
       });
+      //navigate("/");
+      setIsLoading(false);
   }
 
   return (
@@ -77,6 +98,7 @@ function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
               aria-describedby="emailHelp"
               value={email}
               onChange={(e) => emailHandler(e.target.value)}
+              required
             />
             <div id="emailHelp" class="form-text">
               We'll never share your email with anyone else.
@@ -92,18 +114,30 @@ function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
               id="exampleInputPassword1"
               value={passWord}
               onChange={(e) => passWordHandler(e.target.value)}
+              required
             />
           </div>
 
-          <button type="submit" class="btn btn-primary">
-            Submit
+          <button type="submit" class="btn btn-primary" disabled={isLoading}>
+            {isLoading ? (
+              <span>
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>{" "}
+                Loading...
+              </span>
+            ) : (
+              <span>Submit</span>
+            )}
           </button>
         </form>
       </div>
-      <div>user:</div>
-      <div>{currentUser}</div>
-      <div>user email:</div>
-      <div>{JSON.stringify(userData)}</div>
+
+      
+      <div>{currentUser && JSON.stringify(currentUser)}</div>
+      <div>{errorMsg}</div>
     </div>
   );
 }

@@ -11,7 +11,7 @@ const words = useMemo(() => tokenizeWords(formValue), [formValue]);
 const curUser = useContext(UserContext);
     return(
         <>
-        <div>{curUser}</div>
+        <div>{curUser&&JSON.stringify(curUser)}</div>
         <UploadForm  formValue={formValue} setFormValue={setFormValue} />
             <OutputResult />
             {words.length !== 0 && (

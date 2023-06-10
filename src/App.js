@@ -24,7 +24,8 @@ function App() {
     <div>
       <UserContext.Provider value={currentUser}>
         <TokenContext.Provider value={token}>
-          <MainNavigation />
+          <MainNavigation currentUser={currentUser}
+                    setCurrentUser={setCurrentUser} />
           <br></br>
           <Container>
             <Routes>
