@@ -34,8 +34,12 @@ function RegisterPage({ currentUser, setCurrentUser, token, setToken }) {
       password: passWord,
     });
     console.log(user);
+    
+    
+    const apiURI = process.env.REACT_APP_LOCAL;
+    console.log(apiURI);
     axios
-      .post(`https://image-1-hhsvceryxq-uc.a.run.app/v1/auth/register`, user, {
+      .post(`${apiURI}/auth/register`, user, {
         headers: {
           // Overwrite Axios's automatically set Content-Type
           "Content-Type": "application/json",

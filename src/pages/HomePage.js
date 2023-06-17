@@ -4,6 +4,7 @@ import { tokenizeWords } from "../hooks/nlp";
 import OutputResult from "../components/OutputResult";
 import WordCloud from "react-d3-cloud";
 import { UserContext } from "../App";
+import NLPPrompt from "../components/NLPPrompt";
 
 function HomePage({ formValue, setFormValue }){
 //tokenize the input text content
@@ -14,7 +15,7 @@ const curUser = useContext(UserContext);
         <div>{curUser&&JSON.stringify(curUser)}</div>
         <UploadForm  formValue={formValue} setFormValue={setFormValue} />
             <OutputResult />
-            {words.length !== 0 && (
+            {/* {words.length !== 0 && (
               <div class="card">
                 <div class="card-body">
                   <WordCloud
@@ -27,7 +28,8 @@ const curUser = useContext(UserContext);
                   />
                 </div>
               </div>
-            )}
+            )} */}
+            <NLPPrompt formValue={formValue}/>
             <h2 class="h4">The files & text the user has uploaded</h2>
             <div>{formValue} </div>
         </>
