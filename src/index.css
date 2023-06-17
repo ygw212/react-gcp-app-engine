@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  --bs-body-bg: #e9f3f9;
+}
+
+.card {
+  --bs-card-bg: #fff;
+}
+
+textarea:focus {
+  outline: 0;
+}
+
+.mr-1 {
+  padding-right: -0.25rem !important;
+}

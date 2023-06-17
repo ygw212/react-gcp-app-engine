@@ -3,23 +3,23 @@ import { Link, useNavigate } from "react-router-dom";
 function MainNavigation({ currentUser, setCurrentUser }) {
   const navigate = useNavigate();
   return (
-    <nav class="navbar bg-body-tertiary">
-      <div class="container-fluid">
-        <Link to="/" class="navbar-brand">
-          Title
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-lg">
+        <Link to="/" class="navbar-brand text-white">
+          <h2>Summary App - YJIJ</h2>
         </Link>
         <form class="d-flex" role="search">
           {currentUser === null ? (
             <div>
               <button
-                class="btn btn-outline-success me-2"
+                class="btn btn-primary m-1"
                 type="button"
                 onClick={() => navigate("register")}
               >
                 Register
               </button>
               <button
-                class="btn btn-outline-success me-2"
+                class="btn btn-primary m-1"
                 type="button"
                 onClick={() => navigate("login")}
               >
