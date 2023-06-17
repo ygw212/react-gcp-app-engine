@@ -10,8 +10,9 @@ import RegisterPage from "./pages/RegisterPage";
 
 const UserContext = createContext(null);
 const TokenContext = createContext("");
+const ContentContext = createContext("");
 
-export {UserContext};
+export {UserContext, ContentContext};
 function App() {
   //text content input by user
   const [formValue, setFormValue] = useState(" ");
@@ -24,6 +25,7 @@ function App() {
     <div>
       <UserContext.Provider value={currentUser}>
         <TokenContext.Provider value={token}>
+          <ContentContext.Provider value={formValue}>
           <MainNavigation currentUser={currentUser}
                     setCurrentUser={setCurrentUser} />
           <br></br>
@@ -59,6 +61,7 @@ function App() {
               />
             </Routes>
           </Container>
+          </ContentContext.Provider>
         </TokenContext.Provider>
       </UserContext.Provider>
     </div>

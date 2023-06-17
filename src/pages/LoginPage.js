@@ -35,9 +35,10 @@ function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
     });
     console.log(user);
     setIsLoading(true);
+    console.log(process.env.REACT_APP_LOGIN_API);
     axios
       .post(
-        `https://image-1-hhsvceryxq-uc.a.run.app/v1/auth/login`,
+        process.env.REACT_APP_LOGIN_API,
         JSON.stringify({
           email: email,
           password: passWord,
