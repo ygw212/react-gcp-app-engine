@@ -68,7 +68,7 @@ function NLPPrompt() {
       <button class="btn btn-primary" onClick={nlpHanddler}>
         generate
       </button>
-      <p>nlp</p>
+      
       {summary}
     </div>
   );
