@@ -2,13 +2,51 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { ContentContext } from "../App";
 
-function NLPPrompt() {
+function NLPPrompt({setFormValue}) {
+  
   const [summary, setSummery] = useState("");
   const API_ENDPOINT = "us-central1-aiplatform.googleapis.com";
   const PROJECT_ID = "hackathon-yjij";
   const MODEL_ID = "text-bison@001";
-
+  
+  const apiTOKEN = process.env.REACT_APP_API_TOKEN;
+  console.log(apiTOKEN)
   let currentContent = useContext(ContentContext);
+
+  function tokenHandler() {
+    axios
+      .post(
+        `https://oauth2.googleapis.com/revoke?token=${apiTOKEN}`,
+        
+        {
+          headers: {
+            // Overwrite Axios's automatically set Content-Type
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(function (error) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
+      });
+  }
 
   function nlpHanddler() {
     axios
@@ -33,7 +71,7 @@ function NLPPrompt() {
           headers: {
             // Overwrite Axios's automatically set Content-Type
             "Content-Type": "application/json",
-            
+            Authorization: `Bearer ${apiTOKEN}`
           },
         }
       )
@@ -42,6 +80,7 @@ function NLPPrompt() {
         console.log(res.data);
         const result = res.data.predictions[0];
         setSummery(result.content);
+        setFormValue(result.content);
       })
       .catch(function (error) {
         if (error.response) {
@@ -65,10 +104,13 @@ function NLPPrompt() {
 
   return (
     <div>
+      <button class="btn btn-primary" onClick={tokenHandler}>
+        token
+      </button>
       <button class="btn btn-primary" onClick={nlpHanddler}>
         generate
       </button>
-      
+
       {summary}
     </div>
   );

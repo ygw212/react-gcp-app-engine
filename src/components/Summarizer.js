@@ -16,17 +16,17 @@ function Summarizer({ formValue, setFormValue }) {
       setFile(null);
     } else {
       setFormValue(textValue);
-      setTextValue("");
+      //setTextValue("");
     }
   }
 
   function textValueHandler(e) {
-    console.log(e.target.value);
+    
     setTextValue(e.target.value);
   }
 
   function fileValueHandler(e) {
-    console.log(e.target.files[0]);
+    
     setFile(e.target.files[0]);
   }
 

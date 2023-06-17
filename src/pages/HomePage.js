@@ -18,7 +18,7 @@ function HomePage({ formValue, setFormValue }) {
       <Summarizer formValue={formValue} setFormValue={setFormValue} />
       <div>{curUser && JSON.stringify(curUser)}</div>
 
-      <NLPPrompt formValue={formValue} />
+      <NLPPrompt formValue={formValue} setFormValue={setFormValue}/>
       
     </>
   );
