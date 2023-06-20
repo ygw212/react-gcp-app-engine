@@ -2,19 +2,53 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { ContentContext } from "../App";
 
-function NLPPrompt({setFormValue}) {
-  
+
+
+function NLPPrompt({ setFormValue }) {
   const [summary, setSummery] = useState("");
   const API_ENDPOINT = "us-central1-aiplatform.googleapis.com";
   const PROJECT_ID = "hackathon-yjij";
   const MODEL_ID = "text-bison@001";
-  
+
   const apiTOKEN = process.env.REACT_APP_API_TOKEN;
-  console.log(apiTOKEN)
+  console.log(apiTOKEN);
   let currentContent = useContext(ContentContext);
 
+
   function tokenHandler() {
-    
+    axios
+      .get(
+        "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token",
+        {
+          headers: {
+            // Overwrite Axios's automatically set Content-Type
+            "Metadata-Flavor": "Google",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+
+      })
+      .catch(function (error) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
+      });
   }
 
   function nlpHanddler() {
@@ -40,7 +74,7 @@ function NLPPrompt({setFormValue}) {
           headers: {
             // Overwrite Axios's automatically set Content-Type
             "Content-Type": "application/json",
-            Authorization: `Bearer ${apiTOKEN}`
+            Authorization: `Bearer ${apiTOKEN}`,
           },
         }
       )
@@ -73,11 +107,11 @@ function NLPPrompt({setFormValue}) {
 
   return (
     <div>
-      <button class="btn btn-primary" onClick={tokenHandler}>
-        token
-      </button>
       <button class="btn btn-primary" onClick={nlpHanddler}>
         generate
+      </button>
+      <button class="btn btn-primary" onClick={tokenHandler}>
+        token
       </button>
 
       {summary}
