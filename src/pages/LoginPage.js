@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useAuthenticate } from "../hooks/useAuthenticate";
+
 
 function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
   const navigate = useNavigate();
@@ -85,10 +85,11 @@ function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
   }
 
   return (
-    <div class="card" style={{ width: 50 + "%", margin: "auto", padding: 20 }}>
+    <section class="login">
+    <div class="card position-static" style={{ width: 25 + "%", height: 40 + "%", opacity: 0.9, marginLeft: 800, marginRight: 800, marginTop: 180, marginBottom: 180, padding: 20, position: "absolute"}}>
       <div class="card-body">
         <h5 class="card-title">Login</h5>
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitProps}>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">
               Email address
@@ -141,6 +142,7 @@ function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
       <div>{currentUser && JSON.stringify(currentUser)}</div>
       <div>{errorMsg}</div>
     </div>
+    </section>
   );
 }
 export default LoginPage;

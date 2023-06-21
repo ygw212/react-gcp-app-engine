@@ -7,27 +7,25 @@ import { UserContext } from "../App";
 
 import Summarizer from "../components/Summarizer";
 import NLPPrompt from "../components/NLPPrompt";
+import { Container } from "react-bootstrap";
 
-function HomePage({ formValue, setFormValue }){
-//tokenize the input text content
-const words = useMemo(() => tokenizeWords(formValue), [formValue]);
-const curUser = useContext(UserContext);
-    return(
-        <>
-          <h5 class="container-lg">We help you wrap up text into summary. You can paste your text or upload 
+function HomePage({ formValue, setFormValue }) {
+
+  const curUser = useContext(UserContext);
+  return (
+    <>
+      <h5 class="container-lg">
+        We help you wrap up text into summary. You can paste your text or upload
         a document to get your result!
-          </h5>
-    
-        <br/>
-        <Summarizer formValue={formValue} setFormValue={setFormValue}/>
-        <div>{curUser&&JSON.stringify(curUser)}</div>
+      </h5>
 
-       
-            <NLPPrompt formValue={formValue}/>
-            <h2 class="h4">The files & text the user has uploaded</h2>
-            <div>{formValue} </div>
+      <br />
+      <Summarizer formValue={formValue} setFormValue={setFormValue} />
+      <div>{curUser && JSON.stringify(curUser)}</div>
 
-        </>
-    )
+      <NLPPrompt formValue={formValue} setFormValue={setFormValue}/>
+      
+    </>
+  );
 }
 export default HomePage;
