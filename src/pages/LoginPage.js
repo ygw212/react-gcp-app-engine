@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useAuthenticate } from "../hooks/useAuthenticate";
 
+
 function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
   
-   
+
   const [errorMsg, setErrorMsg] = useState("");
   const [email, setEmail] = useState("");
   const [passWord, setPassWord] = useState("");

@@ -1,39 +1,39 @@
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
-import { useState } from 'react';
-import OutputResult from './OutputResult';
+import Card from "react-bootstrap/Card";
+import CardGroup from "react-bootstrap/CardGroup";
+import { useState } from "react";
+import OutputResult from "./OutputResult";
 
+function Summarizer({ formValue, setFormValue }) {
+  const [textValue, setTextValue] = useState("");
+  const [fileInput, setFileInput] = useState(false);
+  const [file, setFile] = useState(null);
 
-function Summarizer({formValue, setFormValue}) {
-    const [textValue, setTextValue] = useState("");
-    const [fileInput, setFileInput] = useState(false);
-    const [file, setFile] = useState(null);
+  function gcpHandler(e) {
+    e.preventDefault();
 
-    function gcpHandler(e) {
-      e.preventDefault();
-  
-      if (file) {
-        setFormValue(file.name);
-        setFile(null);
-      } else {
-        setFormValue(textValue);
-        setTextValue("");
-      }
+    if (file) {
+      setFormValue(file.name);
+      setFile(null);
+    } else {
+      setFormValue(textValue);
+      //setTextValue("");
     }
+  }
 
-    function textValueHandler(e) {
-      console.log(e.target.value);
-      setTextValue(e.target.value);
-    }
+  function textValueHandler(e) {
+    
+    setTextValue(e.target.value);
+  }
 
-    function fileValueHandler(e) {
-      console.log(e.target.files[0]);
-      setFile(e.target.files[0]);
-    }
+  function fileValueHandler(e) {
+    
+    setFile(e.target.files[0]);
+  }
 
   function textInputHandler() {
     setFileInput(true);
   }
+
 
   function fileInputHandler() {
     setFileInput(false);
@@ -59,6 +59,7 @@ function Summarizer({formValue, setFormValue}) {
             />
 
             <input type="file" name="file" onChange={fileValueHandler} />
+
 
             <button
               onClick={gcpHandler}

@@ -5,6 +5,7 @@ import NLPPrompt from "../components/NLPPrompt";
 import { Container } from "react-bootstrap";
 
 function HomePage({ formValue, setFormValue }) {
+
   //tokenize the input text content
   const curUser = useContext(UserContext);
   return (
@@ -19,6 +20,7 @@ function HomePage({ formValue, setFormValue }) {
 
       <h5 class="text-white">
         You can paste your text or upload a document to get your result!
+
       </h5>
 
       <br />
@@ -26,8 +28,10 @@ function HomePage({ formValue, setFormValue }) {
       <div>{curUser && JSON.stringify(curUser)}</div>
 
       <NLPPrompt formValue={formValue} setFormValue={setFormValue}/>
+
       </Container>
       </div>
+
       
     </>
   );
