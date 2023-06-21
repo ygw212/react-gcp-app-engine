@@ -21,9 +21,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useState("");
 
-  const [color, changeColor] = useState("black");
-  
-
   return (
     <div>
       <UserContext.Provider value={currentUser}>
@@ -49,9 +46,6 @@ function App() {
                     setToken={setToken}
                     currentUser={currentUser}
                     setCurrentUser={setCurrentUser}
-                    style={{
-                      backgroundImage:'url(./images/loginbg.jps)'
-                    }}
                   />
                 }
               />

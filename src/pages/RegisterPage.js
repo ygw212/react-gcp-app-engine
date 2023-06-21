@@ -1,81 +1,37 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useAuthenticate } from "../hooks/useAuthenticate";
+
 function RegisterPage({ currentUser, setCurrentUser, token, setToken }) {
   const [email, setEmail] = useState("");
   const [passWord, setPassWord] = useState("");
   const [userName, setUserName] = useState("");
-  const [errorMsg, SetErrorMsg] = useState("");
-  const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState("");
+
   function emailHandler(value) {
     setEmail(value);
-    SetErrorMsg("");
+    setErrorMsg("");
   }
 
   function userNameHandler(value) {
     setUserName(value);
-    SetErrorMsg("");
+    setErrorMsg("");
   }
 
   function passWordHandler(value) {
     setPassWord(value);
-    SetErrorMsg("");
+    setErrorMsg("");
   }
   const [isLoading, setIsLoading] = useState(false);
 
-  function submitHandler(e) {
-    e.preventDefault();
-    console.log(email);
-    console.log(userName);
-    console.log(passWord);
-    const user = JSON.stringify({
-      email: email,
-      name: userName,
-      password: passWord,
-    });
-    console.log(user);
-    
-    
-    const apiURI = process.env.REACT_APP_LOCAL;
-    console.log(apiURI);
-    axios
-      .post(`${apiURI}/auth/register`, user, {
-        headers: {
-          // Overwrite Axios's automatically set Content-Type
-          "Content-Type": "application/json",
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-        const result = res.data.user;
-        setCurrentUser(result);
-        navigate("/");
-      }).catch(function (error) {
-        if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-          SetErrorMsg(error.response.data.message);
-          
-        } else if (error.request) {
-          // The request was made but no response was received
-          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-          // http.ClientRequest in node.js
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
-        }
-        console.log(error.config);
-        setIsLoading(false);
-      });
-    
-    
-  }
-  return (
+  const user = JSON.stringify({
+    email: email,
+    name: userName,
+    password: passWord,
+  });
+  const apiURI = process.env.REACT_APP_REGISTER_API;
+  const submitProps =  useAuthenticate(user,apiURI,setCurrentUser,setErrorMsg,setIsLoading);
+
+    return (
     <section class="registerbg">
     <div class="card position-static" style={{ width: 25 + "%", height: 55 + "%", opacity: 0.9, marginLeft: 580 , marginRight: 580, marginTop: 150, marginBottom: 150, padding: 20, position: "absolute"}}>
       <div class="card-body">
