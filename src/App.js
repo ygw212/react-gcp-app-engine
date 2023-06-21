@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import "./index.css";
 
 const UserContext = createContext(null);
 const TokenContext = createContext("");
@@ -19,7 +20,6 @@ function App() {
   //auth
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useState("");
-  
 
   return (
     <div>
@@ -28,8 +28,7 @@ function App() {
           <ContentContext.Provider value={formValue}>
           <MainNavigation currentUser={currentUser}
                     setCurrentUser={setCurrentUser} />
-          <br></br>
-          <Container>
+          
             <Routes>
               <Route
                 path="/"
@@ -37,9 +36,11 @@ function App() {
                   <HomePage formValue={formValue} setFormValue={setFormValue} />
                 }
               />
+              
               <Route
                 path="/login"
                 element={
+                 
                   <LoginPage
                     token={token}
                     setToken={setToken}
@@ -60,11 +61,12 @@ function App() {
                 }
               />
             </Routes>
-          </Container>
+          
           </ContentContext.Provider>
         </TokenContext.Provider>
       </UserContext.Provider>
     </div>
+
   );
 }
 

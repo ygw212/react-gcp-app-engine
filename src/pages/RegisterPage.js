@@ -30,9 +30,12 @@ function RegisterPage({ currentUser, setCurrentUser, token, setToken }) {
   });
   const apiURI = process.env.REACT_APP_REGISTER_API;
   const submitProps =  useAuthenticate(user,apiURI,setCurrentUser,setErrorMsg,setIsLoading);
-  
-  return (
-    <div class="card" style={{ width: 50 + "%", margin: "auto", padding: 20 }}>
+
+
+    return (
+    <section class="registerbg">
+    <div class="card position-static" style={{ width: 25 + "%", height: 55 + "%", opacity: 0.9, marginLeft: 580 , marginRight: 580, marginTop: 150, marginBottom: 150, padding: 20, position: "absolute"}}>
+
       <div class="card-body">
         <h5 class="card-title">Register</h5>
         <form onSubmit={submitProps}>
@@ -98,6 +101,7 @@ function RegisterPage({ currentUser, setCurrentUser, token, setToken }) {
       <div>{currentUser && JSON.stringify(currentUser)}</div>
       <div>{errorMsg}</div>
     </div>
+    </section>
   );
 }
 export default RegisterPage;

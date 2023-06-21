@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  padding: 0;
 }
 
 code {
@@ -12,9 +14,6 @@ code {
     monospace;
 }
 
-:root {
-  --bs-body-bg: #e9f3f9;
-}
 
 .card {
   --bs-card-bg: #fff;
@@ -24,6 +23,30 @@ textarea:focus {
   outline: 0;
 }
 
-.mr-1 {
-  padding-right: -0.25rem !important;
+
+.login {
+  background-image: url(./images/loginbg.jpg);
+  min-width:100%;
+  min-height:100%;
+  position: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.registerbg {
+  background-image: url(./images/registerbg.jpg);
+  min-width:100%;
+  min-height:100%;
+  position: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.homebg {
+  background-image: url(./images/homebg.jpg);
+  min-width:100%;
+  min-height:100%;
+  position: fixed;
+  background-size: cover;
+  background-position: center;
 }

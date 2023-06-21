@@ -34,6 +34,7 @@ function Summarizer({ formValue, setFormValue }) {
     setFileInput(true);
   }
 
+
   function fileInputHandler() {
     setFileInput(false);
   }
@@ -49,17 +50,16 @@ function Summarizer({ formValue, setFormValue }) {
           </Card.Header>
           <Card.Body style={{ height: "35rem" }}>
             <textarea
-              class="form-control"
-              rows="20"
-              cols="70"
+              className="form-control form-outline mb-4 border border-white"
+              rows="19"
               placeholder="Enter your text here"
               id="exampleFormControlTextarea1"
-              className="border border-white"
               value={textValue}
               onChange={textValueHandler}
             />
 
             <input type="file" name="file" onChange={fileValueHandler} />
+
 
             <button
               onClick={gcpHandler}

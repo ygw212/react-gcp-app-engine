@@ -6,7 +6,7 @@ function MainNavigation({ currentUser, setCurrentUser }) {
     <nav class="navbar navbar-dark bg-dark">
       <div class="container-lg">
         <Link to="/" class="navbar-brand text-white">
-          <h2>Summary App - YJIJ</h2>
+          <h2>YJIJ Summary App</h2>
         </Link>
         <form class="d-flex" role="search">
           {currentUser === null ? (

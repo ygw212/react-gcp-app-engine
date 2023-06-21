@@ -4,6 +4,7 @@ import { useAuthenticate } from "../hooks/useAuthenticate";
 
 function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
   
+
   const [errorMsg, setErrorMsg] = useState("");
   const [email, setEmail] = useState("");
   const [passWord, setPassWord] = useState("");
@@ -26,7 +27,8 @@ function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
   const submitProps =  useAuthenticate(user,apiURI,setCurrentUser,setErrorMsg,setIsLoading);
 
   return (
-    <div class="card" style={{ width: 50 + "%", margin: "auto", padding: 20 }}>
+    <section class="login">
+    <div class="card position-static" style={{ width: 25 + "%", height: 40 + "%", opacity: 0.9, marginLeft: 800, marginRight: 800, marginTop: 180, marginBottom: 180, padding: 20, position: "absolute"}}>
       <div class="card-body">
         <h5 class="card-title">Login</h5>
         <form onSubmit={submitProps}>
@@ -82,6 +84,7 @@ function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
       <div>{currentUser && JSON.stringify(currentUser)}</div>
       <div>{errorMsg}</div>
     </div>
+    </section>
   );
 }
 export default LoginPage;
