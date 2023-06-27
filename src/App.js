@@ -2,11 +2,12 @@ import React, { createContext, useState } from "react";
 import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import UserInfo from "./components/UserInfo";
-import MainNavigation from "./components/MainNavigation";
+import MainNavigation from "./components/Navigation/MainNavigation";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import AnalysisPage from "./pages/AnalysisPage";
 import "./index.css";
 
 const UserContext = createContext(null);
@@ -53,6 +54,17 @@ function App() {
                 path="/Register"
                 element={
                   <RegisterPage
+                    token={token}
+                    setToken={setToken}
+                    currentUser={currentUser}
+                    setCurrentUser={setCurrentUser}
+                  />
+                }
+              />
+              <Route
+                path="/Analysis"
+                element={
+                  <AnalysisPage
                     token={token}
                     setToken={setToken}
                     currentUser={currentUser}

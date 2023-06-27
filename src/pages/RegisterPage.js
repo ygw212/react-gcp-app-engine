@@ -34,7 +34,7 @@ function RegisterPage({ currentUser, setCurrentUser, token, setToken }) {
 
     return (
     <section class="registerbg">
-    <div class="card position-static" style={{ width: 25 + "%", height: 55 + "%", opacity: 0.9, marginLeft: 580 , marginRight: 580, marginTop: 150, marginBottom: 150, padding: 20, position: "absolute"}}>
+    <div class="card position-static" style={{ width: 25 + "%", height: 55 + "%", opacity: 0.9, margin:"auto", marginTop: 50, padding: 20, position: "absolute"}}>
 
       <div class="card-body">
         <h5 class="card-title">Register</h5>
