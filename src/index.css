@@ -23,9 +23,8 @@ textarea:focus {
   outline: 0;
 }
 
-
 .login {
-  background-image: url(./images/loginbg.jpg);
+  background-color: #DEF3FF;
   min-width:100%;
   min-height:100%;
   position: fixed;
@@ -34,8 +33,8 @@ textarea:focus {
 }
 
 .registerbg {
-  background-image: url(./images/registerbg.jpg);
-  min-width:100%;
+  background-color: #DEF3FF;
+  min-width: 100%;
   min-height:100%;
   position: fixed;
   background-size: cover;
@@ -43,7 +42,70 @@ textarea:focus {
 }
 
 .homebg {
-  background-image: url(./images/homebg.jpg);
+  background-color: #DEF3FF;
+  min-width:100%;
+  min-height:100%;
+  position: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.navbar-brand>img {
+  width: 60px;
+  height: 50px;
+  padding:0px 2px;
+  margin-right: 10px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.homeHeader {
+  background-color: #DEF3FF;
+  height: 500px;
+  width: 100%;
+}
+
+.headerTitle {
+  margin-top: 98px;
+  margin-left: 130px;
+}
+
+.sampleCV {
+  background-color: white;
+  height: 500px;
+}
+
+.yourCV {
+  background-color: #F9F9F9;
+  height: 500px;
+}
+
+.footerYJIJ {
+  background-color: black;
+  height: 280px;
+}
+
+.homePicStyle {
+  width: 100px;
+  height: 100px;
+}
+
+.btn-primary {
+  background-color: #05A2FA;
+  border-color: orange;
+  box-shadow: -3px 3px orange, -2px 2px orange, -1px 1px orange;
+}
+
+.btn-primary:hover {
+  background-color: orange;
+  border-color: orange;
+} 
+
+.analysisbg {
+  background-color: #DEF3FF;
   min-width:100%;
   min-height:100%;
   position: fixed;
