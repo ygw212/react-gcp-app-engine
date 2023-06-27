@@ -9,6 +9,7 @@ function NLPPrompt({ setFormValue }) {
   const API_ENDPOINT = "us-central1-aiplatform.googleapis.com";
   const PROJECT_ID = "hackathon-yjij";
   const MODEL_ID = "text-bison@001";
+  const [isLoading, setIsLoading] = useState(false);
 
   const apiTOKEN = process.env.REACT_APP_API_TOKEN;
   console.log(apiTOKEN);
@@ -16,42 +17,11 @@ function NLPPrompt({ setFormValue }) {
 
 
   function tokenHandler() {
-    axios
-      .get(
-        "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token",
-        {
-          headers: {
-            // Overwrite Axios's automatically set Content-Type
-            "Metadata-Flavor": "Google",
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-
-      })
-      .catch(function (error) {
-        if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-          // http.ClientRequest in node.js
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log("Error", error.message);
-        }
-        console.log(error.config);
-      });
+    
   }
 
   function nlpHanddler() {
+    setIsLoading(true);
     axios
       .post(
         `https://${API_ENDPOINT}/v1/projects/${PROJECT_ID}/locations/us-central1/publishers/google/models/${MODEL_ID}:predict`,
@@ -84,8 +54,10 @@ function NLPPrompt({ setFormValue }) {
         const result = res.data.predictions[0];
         setSummery(result.content);
         setFormValue(result.content);
+        setIsLoading(false);
       })
       .catch(function (error) {
+        setIsLoading(false);
         if (error.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
@@ -107,9 +79,21 @@ function NLPPrompt({ setFormValue }) {
 
   return (
     <div>
-      <button class="btn btn-primary" onClick={nlpHanddler}>
-        generate
-      </button>
+      
+      <button type="submit" class="btn btn-primary" disabled={isLoading} onClick={nlpHanddler}>
+            {isLoading ? (
+              <span>
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>{" "}
+                Loading...
+              </span>
+            ) : (
+              <span>generate</span>
+            )}
+          </button>
       <button class="btn btn-primary" onClick={tokenHandler}>
         token
       </button>

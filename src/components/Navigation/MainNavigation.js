@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
-import Logo from "/Users/bazi/Documents/GitHub/react-gcp-app-engine/src/components/Navigation/Logo.js";
+import Logo from "./Logo.js";
 
 function MainNavigation({ currentUser, setCurrentUser }) {
   const navigate = useNavigate();
