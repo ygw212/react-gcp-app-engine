@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
 import { UserContext } from "../App";
-import Summarizer from "../components/Summarizer";
-import NLPPrompt from "../components/NLPPrompt";
-import { Container } from "react-bootstrap";
-import HomeCover from "../components/HomeCoverSection/HomeCover";
+
+import HomeCover from "../components/HomeCover";
 import SampleResume from "../components/SampleResumeSection/SampleResume";
-import UploadYourResume from "../components/UploadUserResumeSection/UploadYourResume";
+import UploadYourResume from "../components/UploadYourResume";
 import FooterSec from "../components/Footer/FooterSec";
 
 function HomePage({ formValue, setFormValue }) {

@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import HomePicture from "./HomePicture.js";
-import { Link } from "react-router-dom";
+import React from "react";
+import homCoverPic from "../images/homCoverPic.png";
+
 function HomeCover() {
   return (
     <div class="homeHeader position-relative">
@@ -31,7 +31,12 @@ function HomeCover() {
           </div>
           <div class="col">
             <div class="position-absolute">
-              <HomePicture />
+              <img
+                src={homCoverPic}
+                style={{ marginLeft: 20 + "px" }}
+                width="540px"
+                height="500px"
+              />
             </div>
           </div>
         </div>

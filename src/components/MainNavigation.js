@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from 'react-bootstrap/Navbar';
-import Logo from "./Logo.js";
+import image from "../images/logo.png";
 
 function MainNavigation({ currentUser, setCurrentUser }) {
   const navigate = useNavigate();
@@ -8,7 +7,10 @@ function MainNavigation({ currentUser, setCurrentUser }) {
     <nav class="navbar navbar-white bg-white">
       <div class="container-lg">
         <Link to="/" class="navbar-brand">
-          <Logo />
+          <img src={image} alt="logo" />
+          <h2>
+            <b>ResumeDebugger</b>
+          </h2>
         </Link>
         <form class="d-flex" role="search">
           {currentUser === null ? (
@@ -27,31 +29,22 @@ function MainNavigation({ currentUser, setCurrentUser }) {
               >
                 Login
               </button>
-              <button
-                class="btn btn m-1 bg-white"
-                type="button"
-              >
+              <button class="btn btn m-1 bg-white" type="button">
                 Resources
               </button>
-              <button
-                class="btn btn m-1 bg-white"
-                type="button"
-              >
+              <button class="btn btn m-1 bg-white" type="button">
                 InterviewPrep
               </button>
-              <button
-                class="btn btn m-1 bg-white"
-                type="button"
-              >
+              <button class="btn btn m-1 bg-white" type="button">
                 Contact Us
               </button>
             </div>
           ) : (
             <div>
-              <Link to="/" class="navbar-brand">
-              <span>{currentUser.name}</span>
-        </Link>
-              
+              <Link to="/userPage" class="navbar-brand">
+                <span>{currentUser.name}</span>
+              </Link>
+
               <button
                 class="btn btn-outline-success me-2"
                 type="button"

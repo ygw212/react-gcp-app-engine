@@ -1,10 +1,8 @@
-import React, { useContext, useState } from "react";
+import  { useContext, useState } from "react";
 import axios from "axios";
 import { ContentContext } from "../App";
 
-
-
-function NLPPrompt({ setFormValue }) {
+function useNLPPrompt({ setFormValue }) {
   const [summary, setSummery] = useState("");
   const API_ENDPOINT = "us-central1-aiplatform.googleapis.com";
   const PROJECT_ID = "hackathon-yjij";
@@ -14,11 +12,6 @@ function NLPPrompt({ setFormValue }) {
   const apiTOKEN = process.env.REACT_APP_API_TOKEN;
   console.log(apiTOKEN);
   let currentContent = useContext(ContentContext);
-
-
-  function tokenHandler() {
-    
-  }
 
   function nlpHanddler() {
     setIsLoading(true);
@@ -77,30 +70,7 @@ function NLPPrompt({ setFormValue }) {
       });
   }
 
-  return (
-    <div>
-      
-      <button type="submit" class="btn btn-primary" disabled={isLoading} onClick={nlpHanddler}>
-            {isLoading ? (
-              <span>
-                <span
-                  class="spinner-border spinner-border-sm"
-                  role="status"
-                  aria-hidden="true"
-                ></span>{" "}
-                Loading...
-              </span>
-            ) : (
-              <span>generate</span>
-            )}
-          </button>
-      <button class="btn btn-primary" onClick={tokenHandler}>
-        token
-      </button>
-
-      {summary}
-    </div>
-  );
+  return nlpHanddler;
 }
 
-export default NLPPrompt;
+export default useNLPPrompt;

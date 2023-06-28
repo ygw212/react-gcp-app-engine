@@ -1,14 +1,14 @@
 import React, { createContext, useState } from "react";
-import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import UserInfo from "./components/UserInfo";
-import MainNavigation from "./components/Navigation/MainNavigation";
+import MainNavigation from "./components/MainNavigation";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import AnalysisPage from "./pages/AnalysisPage";
 import "./index.css";
+import UserPage from "./pages/UserPage";
 
 const UserContext = createContext(null);
 const TokenContext = createContext("");
@@ -28,8 +28,8 @@ function App() {
         <TokenContext.Provider value={token}>
           <ContentContext.Provider value={formValue}>
           <MainNavigation currentUser={currentUser}
-                    setCurrentUser={setCurrentUser} />
-          
+                    setCurrentUser={setCurrentUser} />     
+
             <Routes>
               <Route
                 path="/"
@@ -70,6 +70,12 @@ function App() {
                     currentUser={currentUser}
                     setCurrentUser={setCurrentUser}
                   />
+                }
+              />
+              <Route
+                path="/userPage"
+                element={
+                  <UserPage />
                 }
               />
             </Routes>
