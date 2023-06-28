@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../App";
 
-function UploadYourResume({  setPdfFile }) {
+function UploadYourResume({  setPdfFile,setUserFiles }) {
   // redirect to analysis page
   let navigate = useNavigate();
   const routeChange = () => {
@@ -29,9 +29,12 @@ function UploadYourResume({  setPdfFile }) {
       reader.onloadend = (e) => {
         setPdfError("");
         setPdfFile(e.target.result);
+        setUserFiles(pre=>{
+          return [...pre,{file:e.target.result, advice:`advice for ${file.name}`}];
+        })
       };
       if (!curUser) {
-        routeChange();
+        //routeChange();
       }
     } else {
       setPdfError("Not a valid pdf: Please select only PDF");
