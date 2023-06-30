@@ -75,7 +75,7 @@ textarea:focus {
 
 .sampleCV {
   background-color: white;
-  height: 500px;
+  height: 600px;
 }
 
 .yourCV {
@@ -104,6 +104,19 @@ textarea:focus {
   border-color: orange;
 } 
 
+.btn-outline-secondary {
+  border-radius: 0;
+  padding:3px 3px 3px 3px;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #05A2FA;
+  border-radius: 0;
+  border-color:transparent;
+  box-shadow: 0px 0px 14px #4195fc;
+  transform: scale(1.1);
+}
+
 .analysisbg {
   background-color: #DEF3FF;
   min-width:100%;
@@ -111,4 +124,23 @@ textarea:focus {
   position: fixed;
   background-size: cover;
   background-position: center;
+}
+
+.react-pdf__Page__canvas {
+  margin: auto;
+  margin-top: 20px;
+  width: 70% !important;
+  height: 90% !important;
+}
+
+.pdfButton {
+  width:30;
+  height:50;
+  border-color: grey;
+}
+
+.modal-dialog {
+  width: 800px;
+  height: 700px;
+  margin: auto;
 }

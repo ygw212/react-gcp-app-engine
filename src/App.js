@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 import UserInfo from "./components/UserInfo";
 import MainNavigation from "./components/MainNavigation";
 import { Route, Routes } from "react-router-dom";
