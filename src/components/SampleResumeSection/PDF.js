@@ -9,7 +9,7 @@ function PDF({ pictureUrl, title, fileUrl, sampleId }) {
   return (
     <div class="container">
       <div class="row" style={{ height: 300 + "px" }}>
-        <div class="col-sm">
+        <div class="col-sm" style={{paddingLeft: 50 + 'px'}}>
           <button
             class="btn btn-outline-secondary"
             data-bs-toggle="modal"
@@ -46,7 +46,7 @@ function PDF({ pictureUrl, title, fileUrl, sampleId }) {
                   </Document>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" margin="auto">
+                  <button type="button" class="btn btn-primary" margin="auto" style={{paddingLeft: 40 + 'px', paddingRight: 40 + 'px', marginLeft: 20 + 'px'}}>
                     Analyze
                   </button>
                   <button

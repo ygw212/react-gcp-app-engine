@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../App";
 import { FileUploader } from "react-drag-drop-files";
+import FileUploadButton from "./FileUploadButton";
 
 function UploadYourResume({  setPdfFile,setUserFiles }) {
   // redirect to analysis page
@@ -21,7 +22,7 @@ function UploadYourResume({  setPdfFile,setUserFiles }) {
   // pdf file error state
   const [pdfError, setPdfError] = useState("");
 
-  const fileTypes = ["JPG", "PNG", "GIF","PDF"];
+  const fileTypes = ["PDF"];
 
   function submitHandler(e) {
     e.preventDefault();
@@ -61,10 +62,12 @@ function UploadYourResume({  setPdfFile,setUserFiles }) {
         <h1>
           <center>Upload Your Resume</center>
         </h1>
+        <h4><center>Resume optimization is waiting for you. Please upload your resume below:</center></h4>
         <div class="container-lg">
           <br></br>
           <center>
-          <input class="form-control m-3" type="file" id="formFile" onChange={fileValueHandler}/>
+            <FileUploadButton />
+            <input class="form-control m-3" type="file" id="formFile" onChange={fileValueHandler}/>
             <FileUploader handleChange={dragfileValueHandler} name="file" types={fileTypes} />
             {file&&file.name}
           </center>
