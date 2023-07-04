@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../App";
 import { FileUploader } from "react-drag-drop-files";
 
-function UploadYourResume({  setPdfFile,setUserFiles }) {
+function UploadYourResume({ setPdfFile, setUserFiles }) {
   // redirect to analysis page
   let navigate = useNavigate();
   const routeChange = () => {
@@ -21,7 +21,7 @@ function UploadYourResume({  setPdfFile,setUserFiles }) {
   // pdf file error state
   const [pdfError, setPdfError] = useState("");
 
-  const fileTypes = ["JPG", "PNG", "GIF","PDF"];
+  const fileTypes = ["JPG", "PNG", "GIF", "PDF"];
 
   function submitHandler(e) {
     e.preventDefault();
@@ -32,9 +32,17 @@ function UploadYourResume({  setPdfFile,setUserFiles }) {
       reader.onloadend = (e) => {
         setPdfError("");
         setPdfFile(e.target.result);
-        setUserFiles(pre=>{
-          return [...pre,{file:e.target.result, advice:`advice for ${file.name}`}];
-        })
+        console.log(e.target.result);
+        setUserFiles((pre) => {
+          return [
+            ...pre,
+            {
+              file: e.target.result,
+              fileName: file.name,
+              advice: `advice for ${file.name}`,
+            },
+          ];
+        });
       };
       if (!curUser) {
         //routeChange();
@@ -64,9 +72,18 @@ function UploadYourResume({  setPdfFile,setUserFiles }) {
         <div class="container-lg">
           <br></br>
           <center>
-          <input class="form-control m-3" type="file" id="formFile" onChange={fileValueHandler}/>
-            <FileUploader handleChange={dragfileValueHandler} name="file" types={fileTypes} />
-            {file&&file.name}
+            <input
+              class="form-control m-3"
+              type="file"
+              id="formFile"
+              onChange={fileValueHandler}
+            />
+            <FileUploader
+              handleChange={dragfileValueHandler}
+              name="file"
+              types={fileTypes}
+            />
+            {file && file.name}
           </center>
           <br></br>
           <center>

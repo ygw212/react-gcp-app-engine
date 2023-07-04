@@ -144,3 +144,11 @@ textarea:focus {
   height: 700px;
   margin: auto;
 }
+
+.accordion-button:not(.collapsed){
+  background-color: white;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+}
