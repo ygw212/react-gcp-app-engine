@@ -8,10 +8,11 @@ function PDFUploadForm({
   setUserFiles,
   advice,
   setAdvice,
+  isLoading,
+  setIsLoading
 }) {
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
   const [inputFile,setInputFile] = useState({});
   
@@ -21,7 +22,7 @@ function PDFUploadForm({
     
   }
   
-  const apiURI = process.env.REACT_APP_LOCAL+"/resume/submit";
+  const apiURI = process.env.REACT_APP_API_URI+"/resume/submit";
   const submitHandler = useSubmitPDF(
     file,
     apiURI,

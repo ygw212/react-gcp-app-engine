@@ -11,6 +11,7 @@ import PDFUploadForm from "../components/PDFUploadForm";
 import Advices from "../components/Advices";
 import axios from "axios";
 import { useToken } from "../components/TokenContext";
+import analyzing from "../images/analyzing.gif"
 
 function UserPage({}) {
 
@@ -22,7 +23,7 @@ function UserPage({}) {
   const [userPreFiles, setUserPreFiles] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const apiURI = process.env.REACT_APP_LOCAL;
+  const apiURI = process.env.REACT_APP_API_URI;
   const curToken = useToken();
   useEffect(() => {
     if (userFiles.length === 0) return;
@@ -57,7 +58,7 @@ function UserPage({}) {
           console.log("Error", error.message);
         }
         console.log(error.config);
-        setIsLoading(false);
+        
       });
       return(()=>userPreFiles)
   }, []);
@@ -66,6 +67,7 @@ function UserPage({}) {
     setUserPreFiles((pre) => {
       return pre.filter((taskObject, index) => index !== fileIndex);
     });
+ 
     axios
       .delete(`${apiURI}/resume/${userPreFile.id}`, {
         headers: {
@@ -95,7 +97,7 @@ function UserPage({}) {
     <div>
       <div class="">
         <h2>{curUser && curUser.name}</h2>
-        <PDFUploadForm pdfFile={pdfFile} setPdfFile={setPdfFile} setUserFiles={setUserPreFiles} advice={advice} setAdvice={setAdvice}/>
+        <PDFUploadForm pdfFile={pdfFile} setPdfFile={setPdfFile} setUserFiles={setUserPreFiles} advice={advice} setAdvice={setAdvice} isLoading={isLoading} setIsLoading={setIsLoading}/>
         {/* <UploadYourResume setPdfFile={setPdfFile} setUserFiles={setUserFiles} /> */}
         <div class="row">
           <div class="col-sm-2 overflow-x-auto">
@@ -133,9 +135,12 @@ function UserPage({}) {
                 )}
               </div>
               <div class="col">
-                {advice && (
+                {isLoading?<img src={analyzing} width="540px"
+                height="500px"/>:advice &&<Advices advice={advice}/>}
+                
+                {/* {advice && (
                  <Advices advice={advice}/>
-                )}
+                )} */}
               </div>
             </div>
           </div>

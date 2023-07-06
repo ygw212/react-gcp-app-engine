@@ -21,7 +21,6 @@ export function useAuthenticate(user,apiURI,setCurrentUser,setErrorMsg,setIsLoad
             const result = res.data.user;
             setCurrentUser(result);
             const curToken = res.data.tokens.access.token;
-            console.log(curToken);
             curSetToken(curToken)
             navigate("/userPage");
           }).catch(function (error) {

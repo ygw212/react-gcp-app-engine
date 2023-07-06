@@ -40,7 +40,7 @@ function MainNavigation({ currentUser, setCurrentUser }) {
               </button>
             </div>
           ) : (
-            <div>
+            <div class="d-flex">
               <Link to="/userPage" class="navbar-brand">
                 <span>{currentUser.name}</span>
               </Link>

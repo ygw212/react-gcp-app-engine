@@ -23,7 +23,7 @@ function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
     email: email,
     password: passWord,
   })
-  const apiURI = process.env.REACT_APP_LOCAL+"/auth/login";
+  const apiURI = process.env.REACT_APP_API_URI+"/auth/login";
   const submitProps =  useAuthenticate(user,apiURI,setCurrentUser,setErrorMsg,setIsLoading);
 
   return (
