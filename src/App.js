@@ -59,7 +59,7 @@ function App() {
                   />
                 }
               />
-              <Route path="/Analysis" element={<AnalysisPage />} />
+              
               <Route path="/userPage" element={<UserPage />} />
               <Route
                 path="/SampleResumeAnalysisPage1"
