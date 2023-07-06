@@ -75,12 +75,11 @@ textarea:focus {
 
 .sampleCV {
   background-color: white;
-  height: 600px;
+  height: 550px;
 }
 
 .yourCV {
-  background-color: #F9F9F9;
-  height: 500px;
+  height: 300px;
 }
 
 .footerYJIJ {
@@ -106,7 +105,7 @@ textarea:focus {
 
 .btn-outline-secondary {
   border-radius: 0;
-  padding:3px 3px 3px 3px;
+  padding:0.5px 0.5px 0.5px 0.5px;
 }
 
 .btn-outline-secondary:hover {
@@ -151,4 +150,25 @@ textarea:focus {
 
 .accordion-button:focus {
   box-shadow: none;
+}
+
+.userPage {
+  background-color: #DEF3FF;
+  min-width:100%;
+  min-height:100%;
+  position: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+
+.sc-aXZVg.guZdik {
+  height: 80px;
+  border-radius: 15px;
+  background-color: white;
+}
+
+.sc-fqkvVR.kFhUBM {
+  font-size: 16px;
+  padding-left: 10px;
 }

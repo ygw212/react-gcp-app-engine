@@ -24,9 +24,6 @@ const pageThumbnailPlugin = (props: PageThumbnailPluginProps): Plugin => {
             slot.children = PageThumbnail;
 
             // Reset the sub slot
-            slot.subSlot.attrs = {};
-            slot.subSlot.children = <></>;
-
             return slot;
         },
     };

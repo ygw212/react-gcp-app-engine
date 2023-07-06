@@ -1,15 +1,31 @@
-import React from "react";
+import React, {useState} from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import { useNavigate } from "react-router-dom";
 
-function PDF({ pictureUrl, title, fileUrl, sampleId }) {
+function PDF({ pictureUrl, title, fileUrl, sampleId}) {
   
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const tartgetId = "#" + sampleId;
+
+  // redirect to sample analysis page
+  let navigate = useNavigate();
+  const routeChange = () => {
+    if (tartgetId === "#1") {
+      let path = "/SampleResumeAnalysisPage1";
+      navigate(path);
+    } else if (tartgetId === "#2") {
+      let path = "/SampleResumeAnalysisPage2";
+      navigate(path);
+    } else if (tartgetId === "#3") {
+      let path = "/SampleResumeAnalysisPage3";
+      navigate(path);
+    }
+      
+  };
   return (
     <div class="container">
       <div class="row" style={{ height: 300 + "px" }}>
-        <div class="col-sm">
+        <div class="col-sm" style={{paddingLeft: 70 + 'px'}}>
           <button
             class="btn btn-outline-secondary"
             data-bs-toggle="modal"
@@ -46,7 +62,7 @@ function PDF({ pictureUrl, title, fileUrl, sampleId }) {
                   </Document>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" margin="auto">
+                  <button type="button" class="btn btn-primary" margin="auto" data-bs-dismiss="modal" style={{paddingLeft: 40 + 'px', paddingRight: 40 + 'px', marginLeft: 20 + 'px'}} onClick={routeChange}>
                     Analyze
                   </button>
                   <button

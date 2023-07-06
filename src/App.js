@@ -7,7 +7,9 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import AnalysisPage from "./pages/AnalysisPage";
+import Sample1Page from "./pages/SampleResumeAnalysisPage1";
+import Sample2Page from "./pages/SampleResumeAnalysisPage2";
+import Sample3Page from "./pages/SampleResumeAnalysisPage3";
 import "./index.css";
 import UserPage from "./pages/UserPage";
 
@@ -63,9 +65,31 @@ function App() {
                 }
               />
               <Route
-                path="/Analysis"
+                path="/SampleResumeAnalysisPage1"
                 element={
-                  <AnalysisPage
+                  <Sample1Page
+                    token={token}
+                    setToken={setToken}
+                    currentUser={currentUser}
+                    setCurrentUser={setCurrentUser}
+                  />
+                }
+              />
+              <Route
+                path="/SampleResumeAnalysisPage2"
+                element={
+                  <Sample2Page
+                    token={token}
+                    setToken={setToken}
+                    currentUser={currentUser}
+                    setCurrentUser={setCurrentUser}
+                  />
+                }
+              />
+              <Route
+                path="/SampleResumeAnalysisPage3"
+                element={
+                  <Sample3Page
                     token={token}
                     setToken={setToken}
                     currentUser={currentUser}

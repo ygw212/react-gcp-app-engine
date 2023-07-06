@@ -21,7 +21,7 @@ function UploadYourResume({ setPdfFile, setUserFiles }) {
   // pdf file error state
   const [pdfError, setPdfError] = useState("");
 
-  const fileTypes = ["JPG", "PNG", "GIF", "PDF"];
+  const fileTypes = ["PDF"];
 
   function submitHandler(e) {
     e.preventDefault();
@@ -65,28 +65,21 @@ function UploadYourResume({ setPdfFile, setUserFiles }) {
   return (
     <>
       <div class="yourCV">
-        <br></br>
-        <h1>
-          <center>Upload Your Resume</center>
-        </h1>
-        <div class="container-lg">
-          <br></br>
-          <center>
-            <input
-              class="form-control m-3"
-              type="file"
-              id="formFile"
-              onChange={fileValueHandler}
-            />
-            <FileUploader
-              handleChange={dragfileValueHandler}
-              name="file"
-              types={fileTypes}
-            />
-            {file && file.name}
-          </center>
-          <br></br>
-          <center>
+        <div class="container-md">
+          <div class="container">
+            <div class="row">
+              
+              <div class="col-sm">
+              <div class="uploadFilePart">
+             <br></br>
+              <FileUploader
+                handleChange={dragfileValueHandler}
+                name="file"
+                types={fileTypes}
+                background-color="white"
+              />
+              </div>
+              <br></br>
             <button
               onClick={submitHandler}
               type="button"
@@ -94,7 +87,14 @@ function UploadYourResume({ setPdfFile, setUserFiles }) {
             >
               Analyze
             </button>
-          </center>
+              </div>
+              <div class="col-sm">
+              </div>
+              </div>
+          </div>
+
+          <br></br>
+           
         </div>
       </div>
     </>
