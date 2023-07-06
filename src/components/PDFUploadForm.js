@@ -28,7 +28,8 @@ function PDFUploadForm({
     setAdvice,
     setErrorMsg,
     setIsLoading,
-    setUserFiles
+    setUserFiles,
+    setPdfFile
   );
 
   return (

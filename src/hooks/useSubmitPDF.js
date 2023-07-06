@@ -7,25 +7,30 @@ export function useSubmitPDF(
   setAdvice,
   setErrorMsg,
   setIsLoading,
-  setUserFiles
+  setUserFiles,
+  setPdfFile
 ) {
   const curToken = useToken();
-  let pdfFile = {};
+  
   function submitHandler(e) {
     e.preventDefault();
     setIsLoading(true);
     let reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onloadend = (e) => {
+    reader.onloadend =  (e) => {
       console.log(e.target.result);
-      pdfFile = {
-        file: e.target.result,
-        fileName: file.name,
-      };
-    };
-
-    axios
-      .post(`${apiURI}`, pdfFile, {
+      // pdfFile = JSON.stringify({
+      //   file: e.target.result,
+      //   fileName: file.name,
+      // });
+      let pdfFile= e.target.result;
+      const base64string = pdfFile.replace(/^data:\w+\/\w+;base64,/, '');
+      setPdfFile(pdfFile);
+      axios
+      .post(`${apiURI}`, {
+        file:base64string,
+        fileName:file.name,
+      }, {
         headers: {
           // Overwrite Axios's automatically set Content-Type
           "Content-Type": "application/json",
@@ -35,17 +40,19 @@ export function useSubmitPDF(
       .then((res) => {
         console.log(res);
         const result = res.data;
-        setAdvice(result);
+        setAdvice(result.analysisResult);
         setUserFiles((pre) => {
           return [
             ...pre,
             {
-              file: pdfFile.file,
-              fileName: pdfFile.name,
-              advice: result,
+              data: result.data,
+              pdfName: file.name,
+              analysisResult: result.analysisResult,
+              id:result.analysisResult.id
             },
           ];
         });
+        setIsLoading(false);
       })
       .catch(function (error) {
         if (error.response) {
@@ -67,6 +74,10 @@ export function useSubmitPDF(
         console.log(error.config);
         setIsLoading(false);
       });
+
+    };
+    
+    
   }
 
   return submitHandler;

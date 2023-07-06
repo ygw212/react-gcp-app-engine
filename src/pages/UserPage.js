@@ -9,7 +9,8 @@ import UserFile from "../components/UserFile";
 import { Tree, Text } from "@geist-ui/core";
 import PDFUploadForm from "../components/PDFUploadForm";
 import Advices from "../components/Advices";
-
+import axios from "axios";
+import { useToken } from "../components/TokenContext";
 
 function UserPage({}) {
 
@@ -18,7 +19,11 @@ function UserPage({}) {
   const [advice, setAdvice] = useState(null);
 
   const [userFiles, setUserFiles] = useState([]);
-
+  const [userPreFiles, setUserPreFiles] = useState([]);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const apiURI = process.env.REACT_APP_LOCAL;
+  const curToken = useToken();
   useEffect(() => {
     if (userFiles.length === 0) return;
     localStorage.setItem("userFiles", JSON.stringify(userFiles));
@@ -30,32 +35,82 @@ function UserPage({}) {
     setUserFiles(prevUserFiles);
   }, []);
 
-  function removeHandler(fileIndex) {
-    setUserFiles((pre) => {
+  useEffect(() => {
+    axios
+      .get(`${apiURI}/resume/getAllResumes`, {
+        headers: {
+          // Overwrite Axios's automatically set Content-Type
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${curToken}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        const result = res.data;
+        setUserPreFiles(result.Resumes);
+      })
+      .catch(function (error) {
+        if (error.response) {
+          setErrorMsg(error.response.data.message);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
+        setIsLoading(false);
+      });
+      return(()=>userPreFiles)
+  }, []);
+
+  function removeHandler(fileIndex,userPreFile) {
+    setUserPreFiles((pre) => {
       return pre.filter((taskObject, index) => index !== fileIndex);
     });
+    axios
+      .delete(`${apiURI}/resume/${userPreFile.id}`, {
+        headers: {
+          // Overwrite Axios's automatically set Content-Type
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${curToken}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        const result = res.data;
+        
+      })
+      .catch(function (error) {
+        if (error.response) {
+          setErrorMsg(error.response.data.message);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
+        
+      });
   }
 
   return (
     <div>
       <div class="">
         <h2>{curUser && curUser.name}</h2>
-        <PDFUploadForm pdfFile={pdfFile} setPdfFile={setPdfFile} setUserFiles={setUserFiles} advice={advice} setAdvice={setAdvice}/>
+        <PDFUploadForm pdfFile={pdfFile} setPdfFile={setPdfFile} setUserFiles={setUserPreFiles} advice={advice} setAdvice={setAdvice}/>
         {/* <UploadYourResume setPdfFile={setPdfFile} setUserFiles={setUserFiles} /> */}
         <div class="row">
           <div class="col-sm-2 overflow-x-auto">
             <div>
-              <Tree>
-                {userFiles.map((userFile, index) => (
+            <ul class="list-group">
+                {userPreFiles.map((userPreFile, index) => (
                   <UserFile
                     key={index}
-                    userFile={userFile}
+                    userFile={userPreFile}
                     setAdvice={setAdvice}
                     setPdfFile={setPdfFile}
-                    onTrash={() => removeHandler(index)}
+                    onTrash={() => removeHandler(index,userPreFile)}
                   />
                 ))}
-              </Tree>
+              </ul>
             </div>
           </div>
           <div class="col-sm-10 ">
