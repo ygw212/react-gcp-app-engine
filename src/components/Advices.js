@@ -1,10 +1,7 @@
 function Advices({ advice }) {
   return (
     <div>
-      <div>advice</div>
-      
-      <div class="accordion" id="accordionExample">
-       
+      <div class="accordion" id="accordionExample">      
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button

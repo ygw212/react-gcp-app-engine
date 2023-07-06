@@ -62,7 +62,7 @@ function PDFUploadForm({
                   role="status"
                   aria-hidden="true"
                 ></span>{" "}
-                Loading...
+                Analyzing...
               </span>
             ) : (
               <span>Submit</span>

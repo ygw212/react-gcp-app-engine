@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useAuthenticate } from "../hooks/useAuthenticate";
-import FooterSec from "../components/Footer/FooterSec";
+import { useSetUser } from "../components/UserContext";
 
-function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
-  
+function LoginPage() {
+
+  const setCurrentUser = useSetUser();
 
   const [errorMsg, setErrorMsg] = useState("");
   const [email, setEmail] = useState("");
@@ -81,8 +82,6 @@ function LoginPage({ currentUser, setCurrentUser, token, setToken }) {
         </form>
       </div>
 
-      
-      <div>{currentUser && JSON.stringify(currentUser)}</div>
       <div>{errorMsg}</div>
     </div>
    

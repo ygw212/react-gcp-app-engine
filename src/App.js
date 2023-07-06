@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import MainNavigation from "./components/MainNavigation";
@@ -12,71 +12,34 @@ import Sample3Page from "./pages/SampleResumeAnalysisPage3";
 import "./index.css";
 import UserPage from "./pages/UserPage";
 import { TokenProvider } from "./components/TokenContext";
+import { UserProvider } from "./components/UserContext";
 
-const UserContext = createContext(null);
-
-const ContentContext = createContext("");
-
-export { UserContext, ContentContext };
 function App() {
-  //text content input by user
-  const [formValue, setFormValue] = useState(" ");
-  //auth
-  const [currentUser, setCurrentUser] = useState(null);
-
   return (
     <div>
-      <UserContext.Provider value={currentUser}>
+      <UserProvider>
         <TokenProvider>
-          <ContentContext.Provider value={formValue}>
-            <MainNavigation
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
+          <MainNavigation />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/Register" element={<RegisterPage />} />
+            <Route path="/userPage" element={<UserPage />} />
+            <Route
+              path="/SampleResumeAnalysisPage1"
+              element={<Sample1Page />}
             />
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <HomePage formValue={formValue} setFormValue={setFormValue} />
-                }
-              />
-
-              <Route
-                path="/login"
-                element={
-                  <LoginPage
-                    currentUser={currentUser}
-                    setCurrentUser={setCurrentUser}
-                  />
-                }
-              />
-              <Route
-                path="/Register"
-                element={
-                  <RegisterPage
-                    currentUser={currentUser}
-                    setCurrentUser={setCurrentUser}
-                  />
-                }
-              />
-              
-              <Route path="/userPage" element={<UserPage />} />
-              <Route
-                path="/SampleResumeAnalysisPage1"
-                element={<Sample1Page />}
-              />
-              <Route
-                path="/SampleResumeAnalysisPage2"
-                element={<Sample2Page />}
-              />
-              <Route
-                path="/SampleResumeAnalysisPage3"
-                element={<Sample3Page />}
-              />
-            </Routes>
-          </ContentContext.Provider>
+            <Route
+              path="/SampleResumeAnalysisPage2"
+              element={<Sample2Page />}
+            />
+            <Route
+              path="/SampleResumeAnalysisPage3"
+              element={<Sample3Page />}
+            />
+          </Routes>
         </TokenProvider>
-      </UserContext.Provider>
+      </UserProvider>
     </div>
   );
 }

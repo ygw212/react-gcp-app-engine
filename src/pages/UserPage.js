@@ -1,49 +1,51 @@
 import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../App";
-import UploadYourResume from "../components/UploadYourResume";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import FooterSec from "../components/Footer/FooterSec";
 import UserFile from "../components/UserFile";
-import { Tree, Text } from "@geist-ui/core";
 import PDFUploadForm from "../components/PDFUploadForm";
 import Advices from "../components/Advices";
 import axios from "axios";
-import { useToken } from "../components/TokenContext";
+import { useSetToken, useToken } from "../components/TokenContext";
 import analyzing from "../images/analyzing.gif"
 import homCoverPic from "../images/homCoverPic.png";
+import { useSetUser, useUser } from "../components/UserContext";
 
-function UserPage({}) {
+function UserPage() {
 
-  const curUser = useContext(UserContext);
+  const curUser = useUser();
+  const setCurUser = useSetUser();
   const [pdfFile, setPdfFile] = useState(null);
   const [advice, setAdvice] = useState(null);
 
-  const [userFiles, setUserFiles] = useState([]);
   const [userPreFiles, setUserPreFiles] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const apiURI = process.env.REACT_APP_API_URI;
   const curToken = useToken();
+  const setCurToken =  useSetToken();
+  console.log(curUser)
   useEffect(() => {
-    if (userFiles.length === 0) return;
-    localStorage.setItem("userFiles", JSON.stringify(userFiles));
-  }, [userFiles]);
-
-  useEffect(() => {
-    const prevUserFiles = JSON.parse(localStorage.getItem("userFiles"));
-    if (!prevUserFiles || prevUserFiles.length === 0) return;
-    setUserFiles(prevUserFiles);
+    const savedUser = JSON.parse(localStorage.getItem("curUser"));
+    if (!savedUser) return;
+    setCurUser(savedUser);
   }, []);
 
   useEffect(() => {
+    const savedToken = JSON.parse(localStorage.getItem("curToken"));
+    if (!savedToken) return;    
+    setCurToken(savedToken);
+  }, []);
+
+  useEffect(() => {
+    const savedToken = JSON.parse(localStorage.getItem("curToken"));
     axios
       .get(`${apiURI}/resume/getAllResumes`, {
         headers: {
           // Overwrite Axios's automatically set Content-Type
           "Content-Type": "application/json",
-          Authorization: `Bearer ${curToken}`,
+          Authorization: `Bearer ${savedToken}`,
         },
       })
       .then((res) => {

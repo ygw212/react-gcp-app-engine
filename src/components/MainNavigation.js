@@ -1,8 +1,26 @@
 import { Link, useNavigate } from "react-router-dom";
 import image from "../images/logo.png";
+import { useSetUser, useUser } from "./UserContext";
+import { useEffect } from "react";
 
-function MainNavigation({ currentUser, setCurrentUser }) {
+function MainNavigation() {
   const navigate = useNavigate();
+  const currentUser = useUser();
+  const setCurrentUser = useSetUser();
+
+  useEffect(() => {
+    const savedUser = JSON.parse(localStorage.getItem("curUser"));
+    if (!savedUser) return;
+    setCurrentUser(savedUser);
+  }, []);
+
+  function logOutHandler(){
+    navigate("/");
+    setCurrentUser(null);
+    localStorage.removeItem("curToken");
+    localStorage.removeItem("curUser");
+  }
+
   return (
     <nav class="navbar navbar-white bg-white">
       <div class="container-lg">
@@ -48,7 +66,7 @@ function MainNavigation({ currentUser, setCurrentUser }) {
               <button
                 class="btn btn m-1 bg-white"
                 type="button"
-                onClick={() => setCurrentUser(null)}
+                onClick={logOutHandler}
               >
                 Logout
               </button>
