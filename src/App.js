@@ -1,7 +1,6 @@
 import React, { createContext, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import UserInfo from "./components/UserInfo";
 import MainNavigation from "./components/MainNavigation";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
@@ -10,82 +9,74 @@ import RegisterPage from "./pages/RegisterPage";
 import AnalysisPage from "./pages/AnalysisPage";
 import "./index.css";
 import UserPage from "./pages/UserPage";
+import { TokenProvider } from "./components/TokenContext";
 
 const UserContext = createContext(null);
-const TokenContext = createContext("");
+
 const ContentContext = createContext("");
 
-export {UserContext, ContentContext};
+export { UserContext, ContentContext };
 function App() {
   //text content input by user
   const [formValue, setFormValue] = useState(" ");
   //auth
   const [currentUser, setCurrentUser] = useState(null);
-  const [token, setToken] = useState("");
+
 
   return (
     <div>
       <UserContext.Provider value={currentUser}>
-        <TokenContext.Provider value={token}>
-          <ContentContext.Provider value={formValue}>
-          <MainNavigation currentUser={currentUser}
-                    setCurrentUser={setCurrentUser} />     
+        <TokenProvider>
+            <ContentContext.Provider value={formValue}>
+              <MainNavigation
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
 
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <HomePage formValue={formValue} setFormValue={setFormValue} />
-                }
-              />
-              
-              <Route
-                path="/login"
-                element={
-                 
-                  <LoginPage
-                    token={token}
-                    setToken={setToken}
-                    currentUser={currentUser}
-                    setCurrentUser={setCurrentUser}
-                  />
-                }
-              />
-              <Route
-                path="/Register"
-                element={
-                  <RegisterPage
-                    token={token}
-                    setToken={setToken}
-                    currentUser={currentUser}
-                    setCurrentUser={setCurrentUser}
-                  />
-                }
-              />
-              <Route
-                path="/Analysis"
-                element={
-                  <AnalysisPage
-                    token={token}
-                    setToken={setToken}
-                    currentUser={currentUser}
-                    setCurrentUser={setCurrentUser}
-                  />
-                }
-              />
-              <Route
-                path="/userPage"
-                element={
-                  <UserPage />
-                }
-              />
-            </Routes>
-          
-          </ContentContext.Provider>
-        </TokenContext.Provider>
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <HomePage
+                      formValue={formValue}
+                      setFormValue={setFormValue}
+                    />
+                  }
+                />
+
+                <Route
+                  path="/login"
+                  element={
+                    <LoginPage
+                      currentUser={currentUser}
+                      setCurrentUser={setCurrentUser}
+                    />
+                  }
+                />
+                <Route
+                  path="/Register"
+                  element={
+                    <RegisterPage
+                      currentUser={currentUser}
+                      setCurrentUser={setCurrentUser}
+                    />
+                  }
+                />
+                <Route
+                  path="/Analysis"
+                  element={
+                    <AnalysisPage
+                      currentUser={currentUser}
+                      setCurrentUser={setCurrentUser}
+                    />
+                  }
+                />
+                <Route path="/userPage" element={<UserPage />} />
+              </Routes>
+            </ContentContext.Provider>
+            </TokenProvider>
       </UserContext.Provider>
     </div>
-
   );
 }
 

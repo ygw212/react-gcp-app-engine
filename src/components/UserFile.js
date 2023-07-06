@@ -1,4 +1,4 @@
-import DisplayThumbnailExample from "./PdfThumbnail.tsx";
+
 import { Document, Page, pdfjs } from "react-pdf";
 import { Tree } from "@geist-ui/core";
 import { Trash2 } from '@geist-ui/icons'
