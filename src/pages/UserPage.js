@@ -12,6 +12,7 @@ import Advices from "../components/Advices";
 import axios from "axios";
 import { useToken } from "../components/TokenContext";
 import analyzing from "../images/analyzing.gif"
+import homCoverPic from "../images/homCoverPic.png";
 
 function UserPage({}) {
 
@@ -117,7 +118,10 @@ function UserPage({}) {
           </div>
           <div class="col-sm-10 ">
             <div class="row">
-              {!pdfFile &&<UploadYourResume setPdfFile={setPdfFile} setUserFiles={setUserFiles} />}
+              {!pdfFile &&<img
+                src={homCoverPic}
+                
+              />}
               <div class="col p2">
                 {pdfFile && (
                   //   <Document file={pdfFile} renderMode='svg' options={{

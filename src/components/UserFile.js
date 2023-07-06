@@ -20,6 +20,7 @@ function UserFile({userFile,setAdvice,setPdfFile,onTrash}){
             {/* <DisplayThumbnailExample fileUrl={userFile.file} pageIndex={0} /> */}
             
             <li class="list-group-item" onClick={selectHandler}>{userFile.pdfName}<button onClick={onTrash}>-</button></li>
+            
         </div>
     )
 
