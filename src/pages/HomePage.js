@@ -13,9 +13,7 @@ function HomePage({ formValue, setFormValue }) {
     <>
       <HomeCover />
       <SampleResume />
-      <UploadYourResume />
       <FooterSec />
-
       <div>{curUser && JSON.stringify(curUser)}</div>
     </>
   );

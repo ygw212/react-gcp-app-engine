@@ -46,7 +46,7 @@ function MainNavigation({ currentUser, setCurrentUser }) {
               </Link>
 
               <button
-                class="btn btn-outline-success me-2"
+                class="btn btn m-1 bg-white"
                 type="button"
                 onClick={() => setCurrentUser(null)}
               >
