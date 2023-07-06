@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSetToken } from "../components/TokenContext";
 
 export function useAuthenticate(user,apiURI,setCurrentUser,setErrorMsg,setIsLoading){
     
     const navigate = useNavigate();
-    
+    const curSetToken = useSetToken();
     function submitHandler(e) {
         e.preventDefault();
         setIsLoading(true);
@@ -19,7 +20,10 @@ export function useAuthenticate(user,apiURI,setCurrentUser,setErrorMsg,setIsLoad
             console.log(res);
             const result = res.data.user;
             setCurrentUser(result);
-            navigate("/");
+            const curToken = res.data.tokens.access.token;
+            console.log(curToken);
+            curSetToken(curToken)
+            navigate("/userPage");
           }).catch(function (error) {
             if (error.response) {
               // The request was made and the server responded with a status code
