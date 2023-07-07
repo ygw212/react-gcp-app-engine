@@ -10,6 +10,7 @@ import { useSetToken, useToken } from "../components/TokenContext";
 import analyzing from "../images/analyzing.gif";
 import homCoverPic from "../images/homCoverPic.png";
 import { useSetUser, useUser } from "../components/UserContext";
+import Loader from "../components/Loader";
 
 function UserPage() {
   const curUser = useUser();
@@ -101,7 +102,7 @@ function UserPage() {
               </div>
               <div class="col">
                 {isLoading ? (
-                  <img src={analyzing} width="540px" height="500px" />
+                  <Loader />
                 ) : (
                   advice && <Advices advice={advice} />
                 )}
