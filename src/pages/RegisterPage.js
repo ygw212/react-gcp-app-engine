@@ -29,6 +29,7 @@ function RegisterPage({ currentUser, setCurrentUser, token, setToken }) {
     password: passWord,
   });
   const apiURI = process.env.REACT_APP_API_URI+"/auth/register";
+  console.log(apiURI);
   const submitProps =  useAuthenticate(user,apiURI,setCurrentUser,setErrorMsg,setIsLoading);
 
 

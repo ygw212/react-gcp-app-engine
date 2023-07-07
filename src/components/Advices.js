@@ -1,12 +1,10 @@
 function Advices({ advice }) {
   return (
     <div>
-      <div>advice</div>
-      
       <div class="accordion" id="accordionExample">
-       
+
         <div class="accordion-item">
-          <h2 class="accordion-header">
+          <h2 class="accordion-header" initialVisible>
             <button
               class="accordion-button"
               type="button"
@@ -15,7 +13,7 @@ function Advices({ advice }) {
               aria-expanded="true"
               aria-controls="collapseOne"
             >
-              Overall
+              <h2>Overall</h2>
             </button>
           </h2>
           <div
@@ -23,7 +21,12 @@ function Advices({ advice }) {
             class="accordion-collapse collapse show"
             data-bs-parent="#accordionExample"
           >
-            <div class="accordion-body">{advice.overAllFeedBack}</div>
+            <div class="accordion-body">
+              <div class="circle">
+                <p class="text">{advice.overAllScore}</p>
+              </div>
+              {advice.overAllFeedBack}
+            </div>
           </div>
         </div>
         <div class="accordion-item">
@@ -36,7 +39,7 @@ function Advices({ advice }) {
               aria-expanded="false"
               aria-controls="collapseTwo"
             >
-              Education
+              <h2>Education</h2>
             </button>
           </h2>
           <div
@@ -57,7 +60,7 @@ function Advices({ advice }) {
               aria-expanded="false"
               aria-controls="collapseThree"
             >
-              Experience
+              <h2>Experience</h2>
             </button>
           </h2>
           <div
@@ -66,27 +69,6 @@ function Advices({ advice }) {
             data-bs-parent="#accordionExample"
           >
             <div class="accordion-body">{advice.experienceFeedBack}</div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button
-              class="accordion-button collapsed"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseFour"
-              aria-expanded="false"
-              aria-controls="collapseFour"
-            >
-              Score
-            </button>
-          </h2>
-          <div
-            id="collapseFour"
-            class="accordion-collapse collapse"
-            data-bs-parent="#accordionExample"
-          >
-            <div class="accordion-body">{advice.overAllScore}</div>
           </div>
         </div>
       </div>

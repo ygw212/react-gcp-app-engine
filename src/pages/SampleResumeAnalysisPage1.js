@@ -23,22 +23,23 @@ function Sample1Page() {
                         <div class="accordion-item">
                             <h2 class="accordion-header" initialVisible>
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <h2>Overall Score: 80</h2>
+                                <h2>Overall</h2>
                             </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                            Overall, this resume is well-written and easy to read. The skills section is clear and concise, and the work experience section provides a detailed overview of your experience. However, there are a few areas that could be improved.
+                            <div class="circle">
+                                <p class="text">80</p>
                             </div>
-                            <div class="accordion-body">
+                            Overall, this resume is well-written and easy to read. The skills section is clear and concise, and the work experience section provides a detailed overview of your experience. However, there are a few areas that could be improved.
+                            <div>
                             <strong>First, the resume could be more targeted.</strong> The skills section lists a wide range of skills, but it's not clear which ones are most relevant to the jobs you're applying for. You should tailor your resume to each job you apply for, highlighting the skills that are most relevant to the position.
                             </div>
-                            <div class="accordion-body">
                             <strong>Second, the work experience section could be more concise.</strong> You could use bullet points to list your accomplishments, and you should focus on the most relevant details. For example, instead of saying "Worked with product managers to re-architect a multi-page web app into a single page web-app, boosting yearly revenue by $1.4M," you could say "Re-architected multi-page web app into a single page web-app, boosting yearly revenue by $1.4M."
-                            </div>
-                            <div class="accordion-body">
+                            <div>
                             <strong>Finally, the resume could use some more white space.</strong> The text is very dense, and it would be easier to read if there was more space between the lines.This is a good resume, but it could be improved with a few minor changes. With some targeted editing, you could make this resume a powerful tool for your job search.
                             </div>
+                           </div>
                             </div>
                         </div>
                         <div class="accordion-item">

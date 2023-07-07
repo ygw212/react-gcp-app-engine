@@ -6,14 +6,15 @@ import "react-pdf/dist/esm/Page/TextLayer.css";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import FooterSec from "../components/Footer/FooterSec";
 import UserFile from "../components/UserFile";
-import { Tree, Text } from "@geist-ui/core";
+import PDFPlaceholder from "../components/PDFPlaceholder";
 import PDFUploadForm from "../components/PDFUploadForm";
 import Advices from "../components/Advices";
 import axios from "axios";
 import { useToken } from "../components/TokenContext";
-import analyzing from "../images/analyzing.gif"
+import Loader from "../components/Loader";
+import ResultPlaceholder from "../components/ResultPlaceholder";
 
-function UserPage({}) {
+function UserPage({ }) {
 
   const curUser = useContext(UserContext);
   const [pdfFile, setPdfFile] = useState(null);
@@ -58,16 +59,16 @@ function UserPage({}) {
           console.log("Error", error.message);
         }
         console.log(error.config);
-        
+
       });
-      return(()=>userPreFiles)
+    return (() => userPreFiles)
   }, []);
 
-  function removeHandler(fileIndex,userPreFile) {
+  function removeHandler(fileIndex, userPreFile) {
     setUserPreFiles((pre) => {
       return pre.filter((taskObject, index) => index !== fileIndex);
     });
- 
+
     axios
       .delete(`${apiURI}/resume/${userPreFile.id}`, {
         headers: {
@@ -79,7 +80,7 @@ function UserPage({}) {
       .then((res) => {
         console.log(res);
         const result = res.data;
-        
+
       })
       .catch(function (error) {
         if (error.response) {
@@ -89,66 +90,75 @@ function UserPage({}) {
           console.log("Error", error.message);
         }
         console.log(error.config);
-        
+
       });
   }
 
   return (
     <div>
-      <div class="">
-        <h2>{curUser && curUser.name}</h2>
-        <PDFUploadForm pdfFile={pdfFile} setPdfFile={setPdfFile} setUserFiles={setUserPreFiles} advice={advice} setAdvice={setAdvice} isLoading={isLoading} setIsLoading={setIsLoading}/>
-        {/* <UploadYourResume setPdfFile={setPdfFile} setUserFiles={setUserFiles} /> */}
-        <div class="row">
-          <div class="col-sm-2 overflow-x-auto">
-            <div>
-            <ul class="list-group">
-                {userPreFiles.map((userPreFile, index) => (
-                  <UserFile
-                    key={index}
-                    userFile={userPreFile}
-                    setAdvice={setAdvice}
-                    setPdfFile={setPdfFile}
-                    onTrash={() => removeHandler(index,userPreFile)}
-                  />
-                ))}
-              </ul>
+      <div class="userPage">
+        <div class="container-lg">
+          <div class="row">
+            <div class="col-sm">
+              <br></br>
+              <PDFUploadForm pdfFile={pdfFile} setPdfFile={setPdfFile} setUserFiles={setUserPreFiles} advice={advice} setAdvice={setAdvice} isLoading={isLoading} setIsLoading={setIsLoading} />
+              {/* <UploadYourResume setPdfFile={setPdfFile} setUserFiles={setUserFiles} /> */}
+            </div>
+            <div class="col-sm">
+              <div class="viewHistory">
+                <center><h4 style={{ paddingTop: 30 + 'px' }}>View Your Past Resume Analysis History:</h4></center>
+                <center><h6>Click on the view button, and you will</h6></center>
+                <center><h6>see your past resume list on the left.</h6></center>
+                <center><button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" style={{ paddingLeft: 47 + 'px', paddingRight: 47 + 'px', marginTop: 12 + 'px' }}>View</button></center>
+              </div>
+              <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Past Resume Analysis</h5>
+                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <ul class="list-group border-left-0">
+                    {userPreFiles.map((userPreFile, index) => (
+                      <UserFile
+                        key={index}
+                        userFile={userPreFile}
+                        setAdvice={setAdvice}
+                        setPdfFile={setPdfFile}
+                        onTrash={() => removeHandler(index, userPreFile)}
+                      />
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-sm-10 ">
+          <br></br>
+          <div class="container">
             <div class="row">
-              {!pdfFile &&<UploadYourResume setPdfFile={setPdfFile} setUserFiles={setUserFiles} />}
-              <div class="col p2">
+              <div class="col-sm">
+              {!pdfFile && <PDFPlaceholder />}
                 {pdfFile && (
-                  //   <Document file={pdfFile} renderMode='svg' options={{
-                  //     cMapUrl: `https://unpkg.com/pdfjs-dist@${pdfjs.version}/cmaps/`,
-                  //     cMapPacked: true,
-                  //   }}>
-                  //   <Page pageNumber={1} renderTextLayer={true} width={550}  />
-                  // </Document>
                   <iframe
-                    src={pdfFile}
-                    height={750}
-                    width="100%"
+                    src={`${pdfFile}#view=fit&toolbar=0&navpanes=0`}
+                    height="861px"
+                    width="670px"
                     style={{ border: "none" }}
                   ></iframe>
                 )}
               </div>
-              <div class="col">
-                {isLoading?<img src={analyzing} width="540px"
-                height="500px"/>:advice &&<Advices advice={advice}/>}
-                
-                {/* {advice && (
-                 <Advices advice={advice}/>
-                )} */}
+
+              <div class="col-sm">
+              {!pdfFile && <ResultPlaceholder />}
+                {isLoading ? <Loader /> : advice && <Advices advice={advice} />}
               </div>
+              <br></br>
             </div>
           </div>
         </div>
       </div>
 
-      <FooterSec />
-    </div>
+
+    </div >
   );
 }
 export default UserPage;

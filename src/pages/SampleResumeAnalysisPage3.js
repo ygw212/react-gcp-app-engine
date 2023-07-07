@@ -23,11 +23,14 @@ function Sample3Page() {
                         <div class="accordion-item">
                             <h2 class="accordion-header" initialVisible>
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <h2>Overall Score: 70</h2>
+                                <h2>Overall</h2>
                             </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
+                            <div class="circle">
+                                            <p class="text">70</p>
+                                        </div>
                             Overall, this resume is well-written and easy to read. It includes all of the essential information that a hiring manager would need to know, such as your skills, experience, and education. However, there are a few areas that could be improved.
                             </div>
                             <div class="accordion-body">
