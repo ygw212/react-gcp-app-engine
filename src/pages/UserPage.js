@@ -61,7 +61,6 @@ function UserPage() {
   return (
     <div>
       <div class="">
-        <h2>{curUser && curUser.name}</h2>
         <PDFUploadForm
           setPdfFile={setPdfFile}
           setUserFiles={setUserPreFiles}
