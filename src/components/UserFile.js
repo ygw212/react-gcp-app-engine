@@ -1,29 +1,53 @@
-
-import { Document, Page, pdfjs } from "react-pdf";
-import { Tree } from "@geist-ui/core";
-import { Trash2 } from '@geist-ui/icons'
 import axios from "axios";
+import { useToken } from "./TokenContext";
 
-function UserFile({userFile,setAdvice,setPdfFile,onTrash}){
+function UserFile({
+  userFile,
+  setAdvice,
+  setPdfFile,
+  curIndex,
+  setUserPreFiles,
+  apiURI,
+}) {
+  const curToken = useToken();
+  function selectHandler(e) {
+    setAdvice(userFile.analysisResult);
+    setPdfFile("data:application/pdf;base64," + userFile.data);
+  }
 
-    function selectHandler(e){
-        
-        setAdvice(userFile.analysisResult);
-        setPdfFile("data:application/pdf;base64,"+userFile.data);
-    }
+  function removeHandler(e) {
+    setUserPreFiles((pre) => {
+      return pre.filter((taskObject, index) => index !== curIndex);
+    });
 
-    
+    axios
+      .delete(`${apiURI}/resume/${userFile.id}`, {
+        headers: {
+          // Overwrite Axios's automatically set Content-Type
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${curToken}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        const result = res.data;
+        setAdvice(null);
+        setPdfFile(null);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
-    return(
-        <div class="" >
-           
-            {/* <DisplayThumbnailExample fileUrl={userFile.file} pageIndex={0} /> */}
-            
-            <li class="list-group-item" onClick={selectHandler}>{userFile.pdfName}<button onClick={onTrash}>-</button></li>
-            
-        </div>
-    )
+  return (
+    <div class="">
 
+      <li class="list-group-item" onClick={selectHandler}>
+        {userFile.pdfName}
+        <button onClick={removeHandler}>-</button>
+      </li>
+    </div>
+  );
 }
 
 export default UserFile;

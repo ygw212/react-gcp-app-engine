@@ -3,10 +3,8 @@ import { useState } from "react";
 import { useSubmitPDF } from "../hooks/useSubmitPDF";
 
 function PDFUploadForm({
-  pdfFile,
   setPdfFile,
   setUserFiles,
-  advice,
   setAdvice,
   isLoading,
   setIsLoading
