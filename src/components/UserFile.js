@@ -16,10 +16,11 @@ function UserFile({
   }
 
   function removeHandler(e) {
+    setAdvice(null);
+    setPdfFile(null);
     setUserPreFiles((pre) => {
       return pre.filter((taskObject, index) => index !== curIndex);
     });
-
     axios
       .delete(`${apiURI}/resume/${userFile.id}`, {
         headers: {
@@ -31,8 +32,7 @@ function UserFile({
       .then((res) => {
         console.log(res);
         const result = res.data;
-        setAdvice(null);
-        setPdfFile(null);
+        
       })
       .catch(function (error) {
         console.log(error);
@@ -40,12 +40,13 @@ function UserFile({
   }
 
   return (
-    <div class="">
+    <div class="d-flex">
 
       <li class="list-group-item" onClick={selectHandler}>
         {userFile.pdfName}
-        <button onClick={removeHandler}>-</button>
+        
       </li>
+      <button  class="btn btn-primary" onClick={removeHandler}>-</button>
     </div>
   );
 }
