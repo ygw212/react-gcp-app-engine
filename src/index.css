@@ -82,7 +82,6 @@ textarea:focus {
 .yourCV {
   height: 12rem;
   background-color: #fff;
-  margin-right: 2rem;
   border-radius: 0.3rem;
 }
 
@@ -161,7 +160,6 @@ textarea:focus {
   background-color: #DEF3FF;
   width: 100vw;
   height: 100vh;
-  position: fixed;
   background-size: cover;
   background-position: center;
   overflow-y:auto;
@@ -182,7 +180,6 @@ textarea:focus {
   height: 12rem;
   margin-top: 1.5rem;
   background-color: #fff;
-  margin-left: 2rem;
   border-radius: 0.3rem;
 }
 

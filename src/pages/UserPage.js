@@ -65,7 +65,7 @@ function UserPage() {
     <div>
       <div class="userPage ">
         <div class="container">
-          <div class="row position-relative px-2">
+          <div class="row position-relative">
             <div class="col-4">
               <div class="viewHistory p-3">
                 <center>
@@ -146,22 +146,21 @@ function UserPage() {
           </div>
           <br></br>
             <div class="row">
-              <div class="col ">
+              <div class="col " style={{minHeight: 40+"rem" }}>
                 {!pdfFile ? (
                   <PDFPlaceholder />
                 ) : (
                   <iframe
                     src={`${pdfFile}#view=fit&toolbar=0&navpanes=0`}
-                    height="575rem"
-                    width="445rem"
-                    style={{ marginLeft: 5.2 + "rem" }}
+                    height="100%"
+                    width="100%"
+                    style={{ margin: 0 }}
                   ></iframe>
                 )}
               </div>
 
               <div
                 class="col"
-                style={{ marginLeft: 0.2 + "rem", marginRight: 3 + "rem" }}
               >
                 {!pdfFile && <ResultPlaceholder />}
                 {isLoading ? <Loader /> : advice && <Advices advice={advice} />}
