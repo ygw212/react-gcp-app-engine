@@ -65,12 +65,12 @@ function UserPage() {
     <div>
       <div class="userPage ">
         <div class="container">
-          <div class="row position-relative">
-            <div class="col-sm">
-              <div class="viewHistory position-absolute">
+          <div class="row position-relative px-2">
+            <div class="col-4">
+              <div class="viewHistory p-3">
                 <center>
                   <h5 style={{ paddingTop: 2 + "rem" }}>
-                    View Your Past Resume Analysis History:
+                     Your Past Resume Analysis
                   </h5>
                 </center>
 
@@ -130,7 +130,7 @@ function UserPage() {
                 </div>
               </div>
             </div>
-            <div class="col-sm">
+            <div class="col-8">
               <br></br>
               <PDFUploadForm
                 pdfFile={pdfFile}
@@ -145,9 +145,8 @@ function UserPage() {
             </div>
           </div>
           <br></br>
-          <div class="container">
             <div class="row">
-              <div class="col" style={{ height: 50 + "rem" }}>
+              <div class="col ">
                 {!pdfFile ? (
                   <PDFPlaceholder />
                 ) : (
@@ -167,11 +166,10 @@ function UserPage() {
                 {!pdfFile && <ResultPlaceholder />}
                 {isLoading ? <Loader /> : advice && <Advices advice={advice} />}
               </div>
-              <br></br>
             </div>
-          </div>
         </div>
       </div>
+      <br></br>
     </div>
   );
 }
