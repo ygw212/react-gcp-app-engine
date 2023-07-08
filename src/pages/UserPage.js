@@ -66,7 +66,7 @@ function UserPage() {
       <div class="userPage ">
         <div class="container">
           <div class="row position-relative px-2">
-            <div class="col-3">
+            <div class="col-4">
               <div class="viewHistory p-3">
                 <center>
                   <h5 style={{ paddingTop: 2 + "rem" }}>
@@ -130,7 +130,7 @@ function UserPage() {
                 </div>
               </div>
             </div>
-            <div class="col-9">
+            <div class="col-8">
               <br></br>
               <PDFUploadForm
                 pdfFile={pdfFile}
