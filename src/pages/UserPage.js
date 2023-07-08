@@ -1,49 +1,63 @@
-import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../App";
-import UploadYourResume from "../components/UploadYourResume";
-import { Document, Page, pdfjs } from "react-pdf";
+import React, { useEffect, useState } from "react";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import FooterSec from "../components/Footer/FooterSec";
 import UserFile from "../components/UserFile";
+
 import PDFPlaceholder from "../components/PDFPlaceholder";
 import PDFUploadForm from "../components/PDFUploadForm";
 import Advices from "../components/Advices";
 import axios from "axios";
-import { useToken } from "../components/TokenContext";
-import Loader from "../components/Loader";
+
+
 import ResultPlaceholder from "../components/ResultPlaceholder";
 
-function UserPage({ }) {
 
-  const curUser = useContext(UserContext);
+
+
+
+
+
+import { useSetToken, useToken } from "../components/TokenContext";
+import analyzing from "../images/analyzing.gif";
+import homCoverPic from "../images/homCoverPic.png";
+import { useSetUser, useUser } from "../components/UserContext";
+import Loader from "../components/Loader";
+
+function UserPage() {
+  const curUser = useUser();
+  const setCurUser = useSetUser();
+
   const [pdfFile, setPdfFile] = useState(null);
   const [advice, setAdvice] = useState(null);
-
-  const [userFiles, setUserFiles] = useState([]);
   const [userPreFiles, setUserPreFiles] = useState([]);
-  const [errorMsg, setErrorMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const apiURI = process.env.REACT_APP_API_URI;
   const curToken = useToken();
+  const setCurToken = useSetToken();
+
+  //load user and token from local storage
   useEffect(() => {
-    if (userFiles.length === 0) return;
-    localStorage.setItem("userFiles", JSON.stringify(userFiles));
-  }, [userFiles]);
+    const savedUser = JSON.parse(localStorage.getItem("curUser"));
+    if (!savedUser) return;
+    setCurUser(savedUser);
+  }, [setCurUser]);
 
   useEffect(() => {
-    const prevUserFiles = JSON.parse(localStorage.getItem("userFiles"));
-    if (!prevUserFiles || prevUserFiles.length === 0) return;
-    setUserFiles(prevUserFiles);
+    const savedToken = JSON.parse(localStorage.getItem("curToken"));
+    if (!savedToken) return;
+    setCurToken(savedToken);
   }, []);
 
+  //load all resumes for the user
   useEffect(() => {
+    const savedToken = JSON.parse(localStorage.getItem("curToken"));
     axios
       .get(`${apiURI}/resume/getAllResumes`, {
         headers: {
           // Overwrite Axios's automatically set Content-Type
           "Content-Type": "application/json",
-          Authorization: `Bearer ${curToken}`,
+          Authorization: `Bearer ${savedToken}`,
         },
       })
       .then((res) => {
@@ -52,6 +66,7 @@ function UserPage({ }) {
         setUserPreFiles(result.Resumes);
       })
       .catch(function (error) {
+
         if (error.response) {
           setErrorMsg(error.response.data.message);
         } else {
@@ -64,35 +79,7 @@ function UserPage({ }) {
     return (() => userPreFiles)
   }, []);
 
-  function removeHandler(fileIndex, userPreFile) {
-    setUserPreFiles((pre) => {
-      return pre.filter((taskObject, index) => index !== fileIndex);
-    });
-
-    axios
-      .delete(`${apiURI}/resume/${userPreFile.id}`, {
-        headers: {
-          // Overwrite Axios's automatically set Content-Type
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${curToken}`,
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        const result = res.data;
-
-      })
-      .catch(function (error) {
-        if (error.response) {
-          setErrorMsg(error.response.data.message);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log("Error", error.message);
-        }
-        console.log(error.config);
-
-      });
-  }
+  
 
   return (
     <div>
@@ -114,12 +101,14 @@ function UserPage({ }) {
                   <ul class="list-group border-left-0">
                     {userPreFiles.map((userPreFile, index) => (
                       <UserFile
-                        key={index}
-                        userFile={userPreFile}
-                        setAdvice={setAdvice}
-                        setPdfFile={setPdfFile}
-                        onTrash={() => removeHandler(index, userPreFile)}
-                      />
+                    key={index}
+                    curIndex={index}
+                    userFile={userPreFile}
+                    setAdvice={setAdvice}
+                    setPdfFile={setPdfFile}
+                    setUserPreFiles={setUserPreFiles}
+                    apiURI={apiURI}
+                  />
                     ))}
                   </ul>
                 </div>
@@ -128,13 +117,16 @@ function UserPage({ }) {
             <div class="col-sm">
               <br></br>
                 <PDFUploadForm pdfFile={pdfFile} setPdfFile={setPdfFile} setUserFiles={setUserPreFiles} advice={advice} setAdvice={setAdvice} isLoading={isLoading} setIsLoading={setIsLoading} class="position-absolute"/>
+
             </div>
           </div>
           <br></br>
           <div class="container">
             <div class="row">
+
               <div class="col-sm" style={{height: 50 + 'rem'}}>
               {!pdfFile && <PDFPlaceholder />}
+
                 {pdfFile && (
                   <iframe
                     src={`${pdfFile}#view=fit&toolbar=0&navpanes=0`}
@@ -145,9 +137,11 @@ function UserPage({ }) {
                 )}
               </div>
 
+
               <div class="col-sm" style={{marginLeft: 0.2 +'rem', marginRight: 3 + "rem"}}>
               {!pdfFile && <ResultPlaceholder />}
                 {isLoading ? <Loader /> : advice && <Advices advice={advice} />}
+
               </div>
               <br></br>
             </div>

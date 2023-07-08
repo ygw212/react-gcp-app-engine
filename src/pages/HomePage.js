@@ -1,14 +1,12 @@
 import React, { useContext } from "react";
-import { UserContext } from "../App";
-
 import HomeCover from "../components/HomeCover";
 import SampleResume from "../components/SampleResumeSection/SampleResume";
-import UploadYourResume from "../components/UploadYourResume";
 import FooterSec from "../components/Footer/FooterSec";
+import { useUser } from "../components/UserContext";
 
-function HomePage({ formValue, setFormValue }) {
+function HomePage() {
   
-  const curUser = useContext(UserContext);
+  const curUser = useUser();
   return (
     <>
       <HomeCover />

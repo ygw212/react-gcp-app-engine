@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useAuthenticate } from "../hooks/useAuthenticate";
+import { useSetUser } from "../components/UserContext";
 
-function RegisterPage({ currentUser, setCurrentUser, token, setToken }) {
+function RegisterPage() {
   const [email, setEmail] = useState("");
   const [passWord, setPassWord] = useState("");
   const [userName, setUserName] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+
+  const setCurrentUser = useSetUser();
 
   function emailHandler(value) {
     setEmail(value);
@@ -100,7 +103,6 @@ function RegisterPage({ currentUser, setCurrentUser, token, setToken }) {
         </form>
       </div>
       
-      <div>{currentUser && JSON.stringify(currentUser)}</div>
       <div>{errorMsg}</div>
     </div>
     </div>

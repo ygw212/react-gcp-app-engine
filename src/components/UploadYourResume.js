@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../App";
+
 import { FileUploader } from "react-drag-drop-files";
+import { useUser } from "./UserContext";
 
 function UploadYourResume({ setPdfFile, setUserFiles }) {
   // redirect to analysis page
@@ -12,7 +13,7 @@ function UploadYourResume({ setPdfFile, setUserFiles }) {
     navigate(path);
   };
 
-  const curUser = useContext(UserContext);
+  const curUser = useUser();
 
   const [formValue, setFormValue] = useState(null);
   const [file, setFile] = useState(null);

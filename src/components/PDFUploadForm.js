@@ -3,10 +3,8 @@ import { useState } from "react";
 import { useSubmitPDF } from "../hooks/useSubmitPDF";
 
 function PDFUploadForm({
-  pdfFile,
   setPdfFile,
   setUserFiles,
-  advice,
   setAdvice,
   isLoading,
   setIsLoading
@@ -59,7 +57,7 @@ function PDFUploadForm({
                   role="status"
                   aria-hidden="true"
                 ></span>{" "}
-                Loading...
+                Analyzing...
               </span>
             ) : (
               <span>Analyze</span>
