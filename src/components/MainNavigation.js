@@ -59,10 +59,12 @@ function MainNavigation() {
             </div>
           ) : (
             <div class="d-flex">
-              <Link to="/userPage" class="navbar-brand">
-                <span>{currentUser.name}</span>
-              </Link>
-
+              <button
+                class="btn btn m-1 bg-white"
+                type="button"
+              >
+                Hello, {currentUser.name}
+              </button>
               <button
                 class="btn btn m-1 bg-white"
                 type="button"

@@ -35,11 +35,10 @@ function PDFUploadForm({
     <>
       <div class="yourCV">
         <br></br>
-        <h1>
-          <center>Upload Your Resume</center>
-        </h1>
+        <h5 style={{paddingTop: 8 + 'px'}}>
+          <center>Upload Your Resume Below:</center>
+        </h5>
         <div class="container-lg">
-          <br></br>
           <center>
             <input
               class="form-control m-3"
@@ -47,12 +46,10 @@ function PDFUploadForm({
               id="formFile"
               onChange={fileValueHandler}
             />
-            {file && file.name}
-          </center>
-          <br></br>
+            </center>
           <center>
             
-            <button type="submit" class="btn btn-primary" disabled={isLoading} onClick={submitHandler}>
+            <button type="submit" class="btn btn-primary" disabled={isLoading} onClick={submitHandler} style={{paddingLeft: 40 + 'px', paddingRight: 40 + 'px'}}>
             {isLoading ? (
               <span>
                 <span
@@ -63,7 +60,7 @@ function PDFUploadForm({
                 Analyzing...
               </span>
             ) : (
-              <span>Submit</span>
+              <span>Analyze</span>
             )}
           </button>
           <div>{errorMsg}</div>

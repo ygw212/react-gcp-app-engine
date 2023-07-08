@@ -40,7 +40,7 @@ function PDFList() {
     <>
       <br></br>
       <div class="container">
-        <div class="row" style={{ height: 300 + "px" }}>
+        <div class="row">
           {samples.map((sample) => (
             <div class="col-sm">
               <PDF

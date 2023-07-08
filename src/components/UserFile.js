@@ -33,6 +33,7 @@ function UserFile({
         console.log(res);
         const result = res.data;
         
+
       })
       .catch(function (error) {
         console.log(error);
@@ -46,9 +47,10 @@ function UserFile({
         {userFile.pdfName}
         
       </li>
-      <button  class="btn btn-primary" onClick={removeHandler}>-</button>
+      <button  class="btn btn-primary" onClick={removeHandler}><Trash2 size={22}/></button>
     </div>
   );
+
 }
 
 export default UserFile;

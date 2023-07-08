@@ -12,7 +12,6 @@ function HomePage() {
       <HomeCover />
       <SampleResume />
       <FooterSec />
-      <div>{curUser && JSON.stringify(curUser)}</div>
     </>
   );
 }
