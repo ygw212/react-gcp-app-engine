@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useToken } from "./TokenContext";
-
+import { Trash2 } from "@geist-ui/icons";
 function UserFile({
   userFile,
   setAdvice,
@@ -10,12 +10,12 @@ function UserFile({
   apiURI,
 }) {
   const curToken = useToken();
-  function selectHandler(e) {
+  function selectHandler() {
     setAdvice(userFile.analysisResult);
     setPdfFile("data:application/pdf;base64," + userFile.data);
   }
 
-  function removeHandler(e) {
+  function removeHandler() {
     setAdvice(null);
     setPdfFile(null);
     setUserPreFiles((pre) => {
@@ -32,8 +32,6 @@ function UserFile({
       .then((res) => {
         console.log(res);
         const result = res.data;
-        
-
       })
       .catch(function (error) {
         console.log(error);
@@ -41,16 +39,15 @@ function UserFile({
   }
 
   return (
-    <div class="d-flex">
-        
-      <li class="list-group-item" onClick={selectHandler}>
+    <div class="d-flex justify-content-between">
+      <a class="list-group-item border-0" onClick={selectHandler}>
         {userFile.pdfName}
-        
-      </li>
-      <button  class="btn btn-primary" onClick={removeHandler}><Trash2 size={22}/></button>
+      </a>
+      <button class="btn btn-light" onClick={removeHandler}>
+        <Trash2 size={22} />
+      </button>
     </div>
   );
-
 }
 
 export default UserFile;

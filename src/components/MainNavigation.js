@@ -62,6 +62,7 @@ function MainNavigation() {
               <button
                 class="btn btn m-1 bg-white"
                 type="button"
+                onClick={() => navigate("userPage")}
               >
                 Hello, {currentUser.name}
               </button>
