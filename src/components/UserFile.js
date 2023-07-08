@@ -13,10 +13,9 @@ function UserFile({userFile,setAdvice,setPdfFile,onTrash}){
     }
 
     return(
-        <div class="" > 
-            <li class="list-group-item border-0" onClick={selectHandler}>{userFile.pdfName}
+        <div class="d-flex justify-content-between" > 
+            <li class="list-group-item border-0" onClick={selectHandler}>{userFile.pdfName}</li>
             <button type="button" class="btn btn-light" onClick={onTrash}><Trash2 size={22}/></button>
-            </li>
         </div>
     )
 }

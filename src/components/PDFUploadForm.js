@@ -37,9 +37,9 @@ function PDFUploadForm({
     <>
       <div class="yourCV">
         <br></br>
-        <h4 style={{paddingTop: 8 + 'px'}}>
+        <h5 style={{paddingTop: 8 + 'px'}}>
           <center>Upload Your Resume Below:</center>
-        </h4>
+        </h5>
         <div class="container-lg">
           <center>
             <input

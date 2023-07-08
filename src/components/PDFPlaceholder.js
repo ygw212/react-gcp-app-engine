@@ -6,9 +6,10 @@ function PDFPlaceholder() {
             
             
             <div style={{position:"relative"}}>
-            <img src="example.png" width="290" style={{ marginLeft: 170 + 'px', marginTop: 200 + 'px', position: "absolute" }} />
+            <img src="example.png" width="150rem" style={{ marginLeft: 14 + 'rem', marginTop: 13 + 'rem', position: "absolute" }} />
             </div>
-            <img src="exampleResume.png" height="861" width="670" />
+            <img src="exampleResume.png" height="575rem"
+                    width="445rem" style={{marginLeft: 5.2 + 'rem'}}/>
             
         </div>
     )

@@ -3,7 +3,7 @@ import React from "react";
 function ResultPlaceholder() {
     return (
         <>
-            <div class="accordion" id="accordionExample">
+            <div class="accordion" id="accordionExample" style={{marginLeft: 0.2 +'rem'}}>
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" initialVisible>
@@ -15,7 +15,7 @@ function ResultPlaceholder() {
                             aria-expanded="true"
                             aria-controls="collapseOne"
                         >
-                            <h2>Example Overall</h2>
+                            <h4>Example Overall</h4>
                         </button>
                     </h2>
                     <div
@@ -55,7 +55,7 @@ function ResultPlaceholder() {
                             aria-expanded="false"
                             aria-controls="collapseTwo"
                         >
-                            <h2>Example Education</h2>
+                            <h4>Example Education</h4>
                         </button>
                     </h2>
                     <div
@@ -76,7 +76,7 @@ function ResultPlaceholder() {
                             aria-expanded="false"
                             aria-controls="collapseThree"
                         >
-                            <h2>Example Experience</h2>
+                            <h4>Example Experience</h4>
                         </button>
                     </h2>
                     <div

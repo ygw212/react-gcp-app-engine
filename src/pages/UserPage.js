@@ -96,19 +96,13 @@ function UserPage({ }) {
 
   return (
     <div>
-      <div class="userPage">
+      <div class="userPage ">
         <div class="container-lg">
-          <div class="row">
-            <div class="col-sm">
-              <br></br>
-              <PDFUploadForm pdfFile={pdfFile} setPdfFile={setPdfFile} setUserFiles={setUserPreFiles} advice={advice} setAdvice={setAdvice} isLoading={isLoading} setIsLoading={setIsLoading} />
-              {/* <UploadYourResume setPdfFile={setPdfFile} setUserFiles={setUserFiles} /> */}
-            </div>
-            <div class="col-sm">
-              <div class="viewHistory">
-                <center><h4 style={{ paddingTop: 30 + 'px' }}>View Your Past Resume Analysis History:</h4></center>
-                <center><h6>Click on the view button, and you will</h6></center>
-                <center><h6>see your past resume list on the left.</h6></center>
+          <div class="row position-relative">
+            <div class="col-sm ">
+              <div class="viewHistory position-absolute">
+                <center><h5 style={{ paddingTop: 2 + 'rem' }}>View Your Past Resume Analysis History:</h5></center>
+               
                 <center><button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" style={{ paddingLeft: 47 + 'px', paddingRight: 47 + 'px', marginTop: 12 + 'px' }}>View</button></center>
               </div>
               <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
@@ -131,23 +125,27 @@ function UserPage({ }) {
                 </div>
               </div>
             </div>
+            <div class="col-sm">
+              <br></br>
+                <PDFUploadForm pdfFile={pdfFile} setPdfFile={setPdfFile} setUserFiles={setUserPreFiles} advice={advice} setAdvice={setAdvice} isLoading={isLoading} setIsLoading={setIsLoading} class="position-absolute"/>
+            </div>
           </div>
           <br></br>
           <div class="container">
             <div class="row">
-              <div class="col-sm">
+              <div class="col-sm" style={{height: 50 + 'rem'}}>
               {!pdfFile && <PDFPlaceholder />}
                 {pdfFile && (
                   <iframe
                     src={`${pdfFile}#view=fit&toolbar=0&navpanes=0`}
-                    height="861px"
-                    width="670px"
-                    style={{ border: "none" }}
+                    height="575rem"
+                    width="445rem"
+                    style={{ marginLeft:5.2 + "rem"}}
                   ></iframe>
                 )}
               </div>
 
-              <div class="col-sm">
+              <div class="col-sm" style={{marginLeft: 0.2 +'rem', marginRight: 3 + "rem"}}>
               {!pdfFile && <ResultPlaceholder />}
                 {isLoading ? <Loader /> : advice && <Advices advice={advice} />}
               </div>
@@ -156,8 +154,6 @@ function UserPage({ }) {
           </div>
         </div>
       </div>
-
-
     </div >
   );
 }

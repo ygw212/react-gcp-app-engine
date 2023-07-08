@@ -25,13 +25,13 @@ function PDF({ pictureUrl, title, fileUrl, sampleId}) {
   return (
     <div class="container">
       <div class="row" style={{ height: 300 + "px" }}>
-        <div class="col-sm" style={{paddingLeft: 70 + 'px'}}>
+        <div class="col-sm" style={{paddingLeft: 4 + 'rem'}}>
           <button
             class="btn btn-outline-secondary"
             data-bs-toggle="modal"
             data-bs-target={tartgetId}
           >
-            <img src={pictureUrl} width="260" height="350" />
+            <img src={pictureUrl} width="240rem" height="300rem" />
           </button>
 
           <div

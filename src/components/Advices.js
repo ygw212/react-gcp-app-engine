@@ -13,7 +13,7 @@ function Advices({ advice }) {
               aria-expanded="true"
               aria-controls="collapseOne"
             >
-              <h2>Overall</h2>
+              <h4>Overall</h4>
             </button>
           </h2>
           <div
@@ -39,7 +39,7 @@ function Advices({ advice }) {
               aria-expanded="false"
               aria-controls="collapseTwo"
             >
-              <h2>Education</h2>
+              <h4>Education</h4>
             </button>
           </h2>
           <div
@@ -60,7 +60,7 @@ function Advices({ advice }) {
               aria-expanded="false"
               aria-controls="collapseThree"
             >
-              <h2>Experience</h2>
+              <h4>Experience</h4>
             </button>
           </h2>
           <div

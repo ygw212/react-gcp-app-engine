@@ -35,7 +35,8 @@ function RegisterPage({ currentUser, setCurrentUser, token, setToken }) {
 
     return (
     <section class="registerbg">
-    <div class="card position-static" style={{ width: 25 + "%", height: 55 + "%", opacity: 0.9, margin:"auto", marginTop: 50, padding: 20, position: "absolute"}}>
+      <div class="position-relative">
+    <div class="card position-absolte" style={{ width: 27 + "rem", height: 27 + "rem", opacity: 0.9, margin:"auto", marginTop: 2 + "rem", padding: 1.3 + "rem"}}>
 
       <div class="card-body">
         <h5 class="card-title">Register</h5>
@@ -101,6 +102,7 @@ function RegisterPage({ currentUser, setCurrentUser, token, setToken }) {
       
       <div>{currentUser && JSON.stringify(currentUser)}</div>
       <div>{errorMsg}</div>
+    </div>
     </div>
     </section>
   );

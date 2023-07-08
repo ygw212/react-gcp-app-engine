@@ -25,7 +25,7 @@ function HomeCover() {
                 <h5>We analyze your resume and give professional</h5>
                 <h5>advice on where to improve. Start now!</h5>
                 <h5>You can <b>choose sample resume below</b> or</h5>
-                <h4><b>Login to analyze your own resume!</b></h4>
+                <h5><b>Login to analyze your own resume!</b></h5>
               </div>
             </div>
           </div>
@@ -33,9 +33,9 @@ function HomeCover() {
             <div class="position-absolute">
               <img
                 src={homCoverPic}
-                style={{ marginLeft: 20 + "px" }}
-                width="540px"
-                height="500px"
+                style={{ marginLeft: 1 + "rem" }}
+                width="530rem"
+                height="480rem"
               />
             </div>
           </div>
