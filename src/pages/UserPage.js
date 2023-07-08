@@ -58,8 +58,8 @@ function UserPage() {
         }
         console.log(error.config);
       });
-    return () => userPreFiles;
-  }, [apiURI, navigate, setCurUser, userPreFiles]);
+    
+  }, [apiURI, navigate, setCurUser]);
 
   return (
     <div>
