@@ -31,7 +31,6 @@ function UserFile({
       })
       .then((res) => {
         console.log(res);
-        const result = res.data;
       })
       .catch(function (error) {
         console.log(error);
@@ -40,9 +39,9 @@ function UserFile({
 
   return (
     <div class="d-flex justify-content-between">
-      <a class="list-group-item border-0" onClick={selectHandler}>
+      <li class="list-group-item border-0" onClick={selectHandler}>
         {userFile.pdfName}
-      </a>
+      </li>
       <button class="btn btn-light" onClick={removeHandler}>
         <Trash2 size={22} />
       </button>
