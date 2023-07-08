@@ -13,7 +13,14 @@ function PDFUploadForm({
   const [errorMsg, setErrorMsg] = useState("");
 
   function fileValueHandler(e) {
-    setFile(e.target.files[0]);
+    setErrorMsg("")
+    const inputFile = e.target.files[0];
+    if(inputFile.type==="application/pdf"){
+      setFile(e.target.files[0]);
+    }else{
+      setErrorMsg("Only accept PDF file")
+      setFile(null);
+    }
   }
 
   const apiURI = process.env.REACT_APP_API_URI + "/resume/submit";

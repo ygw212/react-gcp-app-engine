@@ -13,7 +13,13 @@ export function useSubmitPDF(
   const curToken = useToken();
   
   function submitHandler(e) {
+   
     e.preventDefault();
+    if(!file){
+      setErrorMsg("please choose a file")
+      return;
+    }
+    setErrorMsg("")
     setIsLoading(true);
     let reader = new FileReader();
     reader.readAsDataURL(file);

@@ -146,7 +146,7 @@ function UserPage() {
           </div>
           <br></br>
             <div class="row">
-              <div class="col " style={{minHeight: 40+"rem" }}>
+              <div class="col " style={{minHeight: 45+"rem" }}>
                 {!pdfFile ? (
                   <PDFPlaceholder />
                 ) : (
