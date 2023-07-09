@@ -24,8 +24,12 @@ function HomeCover() {
                 <h5>ResumeDebugger helps you boost your career.</h5>
                 <h5>We analyze your resume and give professional</h5>
                 <h5>advice on where to improve. Start now!</h5>
-                <h5>You can <b>choose sample resume below</b> or</h5>
-                <h5><b>Login to analyze your own resume!</b></h5>
+                <h5>
+                  You can <b>choose sample resume below</b> or
+                </h5>
+                <h5>
+                  <b>Login to analyze your own resume!</b>
+                </h5>
               </div>
             </div>
           </div>

@@ -14,10 +14,10 @@ export function TokenProvider({ children }) {
   );
 }
 
-export function useToken(){
-    return useContext(TokenContext);
+export function useToken() {
+  return useContext(TokenContext);
 }
 
-export function useSetToken(){
-    return useContext(SetTokenContext);
+export function useSetToken() {
+  return useContext(SetTokenContext);
 }

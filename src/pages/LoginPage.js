@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import { useAuthenticate } from "../hooks/useAuthenticate";
 import { useSetUser } from "../components/UserContext";
 
-
 function LoginPage() {
-
   const setCurrentUser = useSetUser();
-
 
   const [errorMsg, setErrorMsg] = useState("");
   const [email, setEmail] = useState("");
@@ -25,16 +22,31 @@ function LoginPage() {
   const user = JSON.stringify({
     email: email,
     password: passWord,
-  })
+  });
   const apiURI = process.env.REACT_APP_API_URI + "/auth/login";
-  const submitProps = useAuthenticate(user, apiURI, setCurrentUser, setErrorMsg, setIsLoading);
+  const submitProps = useAuthenticate(
+    user,
+    apiURI,
+    setCurrentUser,
+    setErrorMsg,
+    setIsLoading
+  );
 
   return (
     <>
-      
-        <section class="login">
+      <section class="login">
         <div class="position-relative">
-          <div class="card" style={{ width: 25 + "rem", height: 21 + "rem", opacity: 0.9, margin: "auto", marginTop: 2 + "rem", padding: 0.8 + "rem" }}>
+          <div
+            class="card"
+            style={{
+              width: 25 + "rem",
+              height: 21 + "rem",
+              opacity: 0.9,
+              margin: "auto",
+              marginTop: 2 + "rem",
+              padding: 0.8 + "rem",
+            }}
+          >
             <div class="card-body position-absolute">
               <h5 class="card-title">Login</h5>
               <form onSubmit={submitProps}>
@@ -69,7 +81,11 @@ function LoginPage() {
                   />
                 </div>
 
-                <button type="submit" class="btn btn-primary" disabled={isLoading}>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  disabled={isLoading}
+                >
                   {isLoading ? (
                     <span>
                       <span
@@ -84,15 +100,13 @@ function LoginPage() {
                   )}
                 </button>
               </form>
-            </div>
-            
+              
             <div>{errorMsg}</div>
-          </div>
-          </div>
+            </div>
 
-        </section>
-      
-
+          </div>
+        </div>
+      </section>
     </>
   );
 }

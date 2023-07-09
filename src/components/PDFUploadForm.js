@@ -41,13 +41,14 @@ function PDFUploadForm({
         <h5 style={{ paddingTop: 8 + "px" }}>
           <center>Upload Your Resume</center>
         </h5>
-        <div class="container-lg">
+        <form onSubmit={submitHandler}>
           <center>
             <input
               class="form-control m-3"
               type="file"
               id="formFile"
               onChange={fileValueHandler}
+              required
             />
           </center>
           <center>
@@ -55,7 +56,7 @@ function PDFUploadForm({
               type="submit"
               class="btn btn-primary"
               disabled={isLoading}
-              onClick={submitHandler}
+              
               style={{ paddingLeft: 40 + "px", paddingRight: 40 + "px" }}
             >
               {isLoading ? (
@@ -73,7 +74,7 @@ function PDFUploadForm({
             </button>
             <div>{errorMsg}</div>
           </center>
-        </div>
+        </form>
       </div>
     </>
   );

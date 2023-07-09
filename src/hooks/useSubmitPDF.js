@@ -16,7 +16,7 @@ export function useSubmitPDF(
    
     e.preventDefault();
     if(!file){
-      setErrorMsg("please choose a file")
+      setErrorMsg("Please choose a PDF file")
       return;
     }
     setErrorMsg("")

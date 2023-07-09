@@ -14,7 +14,7 @@ function MainNavigation() {
     setCurrentUser(savedUser);
   }, []);
 
-  function logOutHandler(){
+  function logOutHandler() {
     navigate("/");
     setCurrentUser(null);
     localStorage.removeItem("curToken");

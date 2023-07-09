@@ -2,7 +2,6 @@ function Advices({ advice }) {
   return (
     <div>
       <div class="accordion" id="accordionExample">
-
         <div class="accordion-item">
           <h2 class="accordion-header" initialVisible>
             <button
